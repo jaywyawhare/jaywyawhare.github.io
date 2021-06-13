@@ -1,286 +1,345 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Arinjay Wyawhare</title>
-  <link rel="stylesheet" type="text/css" href="./main.css">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,500,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300" rel="stylesheet">
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-  <div class="header-container">
-    <h1 class="header-title">Arinjay Wyawhare</h1>
-
-    <div class="social-media-icons">
-      <a class="icon" href="https://github.com/jaywyawhare"
-      target="_blank">
-        <i class="fa fa-github"></i>
-      </a>
-      <!-- <a class="icon" href="https://www.linkedin.com/in/manveer-basra/" target="_blank">
-        <i class="fa fa-linkedin"></i>
-      </a>
-      <a class="icon" href="https://www.facebook.com/manveer.basra.3"
-      target="_blank">
-        <i class="fa fa-facebook"></i>
-      </a> -->
-      <a class="icon" href="mailto:arinjaybw333@gmail.com">
-        <i class="fa fa-envelope"></i>
-      </a>
-    </div>
-
-    <p class="header-intro">I am a Computer Science student at the
-    <a href="https://www.kiit.ac.in/" target="_blank">Kalinga Institute of Industrial Technology</a>.
-    </p>
-  </div>
-
-  <div class="about-container">
-    <div class="about-terminal">
-      <div class="terminal-header">
-        <div class="terminal-header-button" style="background-color: #f96256;"></div>
-        <div class="terminal-header-button" style="background-color: #fdbc3d;"></div>
-        <div class="terminal-header-button" style="background-color: #33c948;"></div>
-      </div>
-      <div class="terminal-window">
-        <div class="statement">
-          <p class="input-statement">Arinjay.age</p>
-          <p class="output-statement">
-            19
-          </p>
-        </div>
-        <div class="statement">
-          <p class="input-statement">Arinjay.location</p>
-          <p class="output-statement">
-            "Aurangabad, India"
-          </p>
-        </div>
-        <!-- <div class="statement">
-          <p class="input-statement">Manveer.resume</p>
-          <p class="output-statement">
-            "<a href="./manveer_resume.pdf" target="_blank">manveer_resume.pdf</a>"
-          </p>
-        </div> -->
-        <div class="statement">
-          <p class="input-statement">Arinjay.education</p>
-          <p class="output-statement">
-            "In 2nd year of a Computer Science Engineering"
-          </p>
-        </div>
-        <div class="statement">
-          <p class="input-statement">Arinjay.skills</p>
-          <p class="output-statement">
-            ["Python", "Linux", "C", "html", "css", "git"]
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- <div class="project-title-container">
-    <h1>Projects</h1>
-  </div>
-
-  <div class="projects-container">
-    <div class="projects-content">
-
-      <!-- On-Time Card -->
-      <!-- <div class="project-card">
-        <div class="card-img">
-          <img src="img/ontime_cover.jpg" height="400px">
-        </div>
-        <div class="card-text">
-          <div class="card-header">
-            <h1>On-Time</h1>
-          </div>
-          <div class="card-about">
-            <p>An Android app that allows users to set alarms, it then analyzes
-              traffic and weather data to move the alarm to an earlier time if
-              needed, ensuring the user arrives on time. It is being built using
-              Android Studio.
-            </p>
-          </div>
-          <div class="card-tags">
-            <span>Java</span>
-            <span>XML</span>
-            <span>REST APIs</span>
-            <span>Room Persistence</span>
-            <span>Android Studio</span>
-          </div> --> 
-
-          <!--
-          <a href="https://www.youtube.com/watch?v=5UtocjpbL2Y" target="_blank">
-            <div class="project-link-container demo">
-              <i class="fa fa-external-link"></i>
-              <p>Demo Video</p>
-            </div>
-          </a>
-          -->
-          <!-- <a href="https://github.com/ManveerBasra/OnTime" target="_blank">
-            <div class="project-link-container source">
-              <i class="fa fa-github"></i>
-              <p>View Source</p>
-            </div>
-          </a>
-        </div>
-      </div> -->
-
-      <!-- Game Center Card -->
-      <!-- <div class="project-card">
-        <div class="card-img">
-          <img src="img/game_center_cover.png" height="400px">
-        </div>
-        <div class="card-text">
-          <div class="card-header">
-            <h1>Game Center</h1>
-          </div>
-          <div class="card-about">
-            <p>An collaborative effort between 5 students to make an Android
-              app of multiple mini games. A user can login and save or load game.
-              The app was built with a strong emphasis on OO principles and I
-              learned a lot about design patterns and unit testing.
-            </p>
-          </div>
-          <div class="card-tags">
-            <span>Java</span>
-            <span>XML</span>
-            <span>Unit Testing</span>
-            <span>Android Studio</span>
-          </div> -->
-
-          <!--
-          <a href="https://www.youtube.com/watch?v=5UtocjpbL2Y" target="_blank">
-            <div class="project-link-container demo">
-              <i class="fa fa-external-link"></i>
-              <p>Demo Video</p>
-            </div>
-          </a>
-          -->
-          <!-- <a href="https://github.com/ManveerBasra/GameCenter" target="_blank">
-            <div class="project-link-container source">
-              <i class="fa fa-github"></i>
-              <p>View Source</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Website Design Card -->
-      <!-- <div class="project-card">
-        <div class="card-img">
-          <img src="img/website_portfolio_cover.png" height="400px">
-        </div>
-        <div class="card-text">
-          <div class="card-header">
-            <h1>Website Portfolio</h1>
-          </div>
-          <div class="card-about">
-            <p>This project is this website, and it was my first
-              experience working with HTML and CSS. I programmed it completely
-              from scratch, and I ended up learning a lot about layout and site
-              structure. I also learned I have a passion for front-end design.
-            </p>
-          </div>
-          <div class="card-tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>Front-End Design</span>
-          </div>
-
-          <a href="https://github.com/ManveerBasra/ManveerBasra.github.io" target="_blank">
-            <div class="project-link-container source">
-              <i class="fa fa-github"></i>
-              <p>View Source</p>
-            </div>
-          </a>
-        </div>
-      </div> --> 
-
-      <!-- Instagram Analytics Card -->
-      <!-- <div class="project-card">
-        <div class="card-text">
-          <div class="card-header">
-            <h1>Instagram Analytics</h1>
-          </div>
-          <div class="card-about">
-            <p>This project was based on a curiosity to use and play around with
-              <a href="https://www.seleniumhq.org/" target="_blank">Selenium</a>.
-              I applied techniques learned from working on
-              <a href="https://github.com/ManveerBasra/ActivityExtractor" target="_blank">
-              ActivityExtractor</a> during
-              <a href="https://codein.withgoogle.com/archive/2016/" target="_blank">
-              Google Code-In 2016</a>.
-              The main purpose of it is to login into a user's Instagram account,
-              gather data about posts and followers and output to a .json file,
-              it does this all without using Instagram's API.
-            </p>
-          </div>
-          <div class="card-tags">
-            <span>Python</span>
-            <span>Json</span>
-            <span>Selenium</span>
-            <span>HTML</span>
-          </div>
-
-          <a href="https://www.youtube.com/watch?v=5UtocjpbL2Y" target="_blank">
-            <div class="project-link-container demo">
-              <i class="fa fa-external-link"></i>
-              <p>Demo Video</p>
-            </div>
-          </a>
-          <a href="https://github.com/ManveerBasra/InstagramAnalytics" target="_blank">
-            <div class="project-link-container source">
-              <i class="fa fa-github"></i>
-              <p>View Source</p>
-            </div>
-          </a>
-        </div>
-      </div> -->
-
-      <!-- Minimax Games Card -->
-      <!-- <div class="project-card">
-        <div class="card-text">
-          <div class="card-header">
-            <h1>Minimax Games</h1>
-          </div>
-          <div class="card-about">
-            <p>This project was done as part of a school assignment aimed at teaching
-              students recursion. Our task was to implement 2 text-based games
-              and design recursive and iterative minimax functions. As these two
-              functions are generally inefficient in regards to time and space,
-              I added 2 more optimized minimax strategies (Memoization and Myopia).
-              While working on this project, I learned a lot about designing algorithms,
-              specifically how to make them more compact and efficient, and how to manage
-              data more effectively.
-            </p>
-          </div>
-          <div class="card-tags">
-            <span>Python</span>
-          </div>
-
-          <a href="https://www.youtube.com/watch?v=1yMB0LOnr6s" target="_blank">
-            <div class="project-link-container demo">
-              <i class="fa fa-external-link"></i>
-              <p>&nbspDemo Video</p>
-            </div>
-          </a>
-          <a href="https://github.com/ManveerBasra/MinimaxTextGames" target="_blank">
-            <div class="project-link-container source">
-              <i class="fa fa-github"></i>
-              <p>&nbspView Source</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-
-    </div>
-  </div> -->
-
-  <div class="footer">
-    <p>Created and maintained by Jay. © 2021</p>
-  </div>
-
-</body>
+h1, p, span{
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  body {
+    background-color: #f5fbfe;
+  }
+  
+  /* --- HEADER --- */
+  .header-container {
+    max-width: 1000px;
+    margin-top: 15vh;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+  }
+  
+  .header-title {
+    font-weight: 400;
+    font-size: 70px;
+    color: #2979ff;
+    margin: 0 0;
+  }
+  
+  .header-intro {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 2;
+    letter-spacing: 0.75px;
+    color: #444;
+    margin-top: 40px;
+  }
+  
+  .header-intro a {
+    color: #2979ff;
+    text-decoration: none;
+  }
+  
+  /* icons */
+  
+  .social-media-icons {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .icon {
+    display: block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    color: #444;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(50,50,93,.1), 0 1px 4px rgba(0,0,0,.2);
+    border-radius: 50%;
+    font-size: 16px;
+    text-align: center;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .icon:hover{
+    color: #2979ff;
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.2);
+  }
+  
+  
+  /* --- ABOUT TERMINAL --- */
+  
+  .about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  
+  .about-terminal {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .terminal-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 28px;
+    width: 100%;
+    background-color: #e4e3e5;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .terminal-header-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+  
+  .terminal-window {
+    background-color: #5a5d7a;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 50px 100px rgba(50,50,93,.15), 0 15px 35px rgba(50,50,93,.2), 0 5px 15px rgba(0,0,0,.12);
+  }
+  
+  .terminal-window .statement:first-child {
+    padding-top: 30px;
+  }
+  
+  .terminal-window a {
+    color: #35feff;
+  }
+  
+  .statement {
+    margin-bottom: 35px;
+    margin-left: 35px;
+    margin-right: 35px;
+  }
+   .input-statement {
+    display: block;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    font-size: 18px;
+    color: #f7f7f7;
+    margin: 5px 0;
+  }
+   .input-statement:before {
+    content: ">\A0";
+  }
+   .output-statement {
+    display: block;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    font-size: 18px;
+    color: #e7d184;
+    margin: 5px 0;
+  }
+  
+  
+  /* --- PROJECTS --- */
+  
+  /* title */
+  
+  .project-title-container {
+    width: 100%;
+    text-align: center;
+    margin: 100px 0;
+  }
+  
+  .project-title-container h1 {
+    font-size: 30px;
+    font-weight: 300;
+    color: #444;
+  }
+  
+  .project-title-container h1:after {
+    content: " ";
+    border: 2px solid #2979ff;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 102px;
+  }
+  
+  /* cards */
+  
+  .projects-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .projects-content {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+  }
+  
+  .project-card {
+    width: 100%;
+    box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1);
+    margin-bottom: 50px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+  }
+  
+  .card-img {
+    max-height: 375px;
+    max-width: 175px;
+    overflow: hidden;
+  }
+  
+  .card-text {
+    flex: 1;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+  
+  .card-header {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    margin-bottom: -10px;
+  }
+  
+  .project-link-container {
+    display: inline-block;
+    white-space: nowrap;
+    box-shadow: 0 3px 6px rgba(50,50,93,.1), 0 1px 4px rgba(0,0,0,.2);
+    border-radius: 4px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 14px;
+    margin-right: 20px;
+    margin-top: 15px;
+    transition: all .3s ease;
+  }
+  
+  .project-link-container.demo {
+    background-color: #2979ff;
+    color: #fff;
+  }
+  
+  .project-link-container.source {
+    background-color: #fff;
+    color: #444;
+  }
+  
+  .project-link-container i {
+    font-size: 14px;
+  }
+  
+  .project-link-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.2);
+  }
+  
+  .project-link-container.demo:hover {
+    background-color: #669eff;
+  }
+  
+  .project-link-container.source:hover {
+    color: #2979ff;
+  }
+  
+  .project-link-container a, i, p {
+    display: inline-block;
+  }
+  
+  .card-text h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.75;
+  }
+  
+  .card-about p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    letter-spacing: 0.5px;
+  }
+  
+  .card-about a {
+    color: #2979ff;
+    text-decoration: none;
+  }
+  
+  .card-tags span {
+    color: #444;
+    border: 2px solid #2979ff;
+    border-radius: 8px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 7px 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+  
+  
+  /* --- FOOTER --- */
+  
+  .footer {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .footer p {
+    font-size: 12px;
+    font-weight: 300;
+    color: #444;
+  }
+  
+  /* Small Screens (Phones) */
+  @media (max-width: 767px) {
+    .about-container,
+    .projects-content {
+      padding: 0 15px;
+    }
+  
+    .header-container {
+      padding: 0 20px;
+      margin-bottom: 30px;
+    }
+  
+    .header-title {
+      text-align: center;
+      font-size: 40px;
+      padding-bottom: 10px;
+    }
+  
+    .header-intro {
+      font-size: 18px;
+      margin-top: 25px;
+      text-align: center;
+    }
+  
+    .social-media-icons {
+      justify-content: center;
+    }
+  
+    .project-title-container {
+      margin-top: 100px;
+      margin-bottom: 40px;
+    }
+  
+    .card-text {
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 25px;
+      padding-bottom: 30px;
+    }
+  
+  }
