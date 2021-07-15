@@ -70,6 +70,11 @@ var $loop = setInterval(function () {
     left: -($xp * 0.075) + 180 + 'px',
     top: -($yp * 0.075) - 50 + 'px'
   });
+  // resume-page elements
+  $(".first-circle-resume").css({
+    left: -($xp * 0.075) + 180 + 'px',
+    top: -($yp * 0.075) - 50 + 'px'
+  });
    // blogs-page elements
    $(".first-circle-blogs").css({
     left: -($xp * 0.075) + 180 + 'px',
