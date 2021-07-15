@@ -1,0 +1,121 @@
+:root {
+    --background-color: #212121;
+    --background-accent-color: #2B2B2B;
+    --light-orange-color: #FFB74D;
+    --main-orange-color: #FF9800;
+    --grey-color: #9E9E9E;
+  
+    --outer-margin: 75px;
+  }
+  
+  @font-face { font-family: Stolzl-Display; src: url('../src/Stolzl_Display_Bold.otf'); } 
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  div, p, a {
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  body {
+    background-color: var(--background-color);
+  }
+  
+  .circle {
+    position: absolute;
+    background-color: var(--background-accent-color);
+    border-radius: 50%;
+    z-index: -3;
+  }
+  
+  .mouse-pointer {
+    pointer-events: none;
+    position: fixed;
+    background-color: rgba(255, 152, 0, 1);
+    border-radius: 50%;
+    z-index: 3;
+    width: 20px;
+    height: 20px;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  
+  /* TOP BAR */
+  
+  .top-bar {
+    margin: 0 var(--outer-margin);
+    padding-top: var(--outer-margin);
+    justify-self: center;
+  }
+  
+  .main-logo {
+    /* make logo not selectable */
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+  
+  .highlight-circle {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 97px;
+    left: 99px;
+    background-color:rgba(255, 152, 0, 0);
+    border-radius: 50%;
+    z-index: -1;
+    transition: all .3s ease;
+  }
+  
+  .nav-bar {
+    float: right;
+  }
+  
+  .nav-bar li {
+    display: inline;
+  }
+  
+  .nav-bar a {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 3.12px;
+    font-size: 18px;
+    padding-left: 56px;
+    transition: all .3s ease;
+  }
+  
+  .nav-bar a:hover {
+    color: var(--main-orange-color);
+  }
+  
+  .nav-bar a.active {
+    color: var(--main-orange-color);
+  }
+  
+  /* MEDIA BREAKPOINTS */
+  
+  /* Small Screens (Phones) */
+  @media (max-width: 768px) {
+    :root {
+      --outer-margin: 25px;
+    }
+  
+    .nav-bar a {
+      text-align: end;
+      display: block;
+      padding-left: 0px;
+      padding-bottom: 10px;
+    }
+  
+    .mouse-pointer {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
