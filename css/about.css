@@ -207,11 +207,11 @@ body {
   /* Small Screens (Phones) */
   
   @media (max-width: 767px) {
-  
+    
     body {
       overflow: scroll;
       overflow-y: scroll;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
   
     .main-name {
