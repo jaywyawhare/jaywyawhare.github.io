@@ -19,28 +19,6 @@ body {
     color: #d1d1d1;
 }
 
-.folders {
-    width: 160px;
-    height: 500px;
-    margin-top: 3rem;
-    text-align: center;
-    position: absolute;
-    padding: 50px;
-    cursor: pointer;
-}
-
-.folder__type {
-    margin-top: 50%;
-}
-
-.folder__type > img {
-    width: 60px;
-}
-
-.folder__type > span {
-    color: #fff;
-    font-family: "Ubuntu Mono";
-}
 
 .terminal {
     width: 1000px;
@@ -159,13 +137,13 @@ body {
     text-align: center;
 }
 
-.system__info {
+.causion {
     width: 500px;
     margin: 0 auto;
     display: block;
 }
 
-.system__info > span {
+.causion > span {
     display: block;
     margin: 10px 0;
     color: #ffffff;

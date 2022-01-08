@@ -41,8 +41,53 @@ terminal.addEventListener('click', () => {
     inputEl.focus()
 })
 
+const audios = {
+    error: '../audio/src_assets_audio_error.wav',
+    folder: '../audio/src_assets_audio_folder.wav',
+    scan: '../audio/src_assets_audio_scan.wav',
+    info: '../audio/src_assets_audio_info.wav',
+    granted: '../audio/src_assets_audio_granted.wav',
+    keyboard: '../audio/src_assets_audio_keyboard.wav',
+    stdout: '../audio/src_assets_audio_stdout.wav',
+    stdin: '../audio/src_assets_audio_stdin.wav'
+}
 
+const audio = new Audio()
 
+const systemInfo = [
+    {
+        key: 'appVersion',
+        value: 'App version'
+    },
+    {
+        key: 'cookieEnabled',
+        value: 'Cookie Enabled'
+    },
+    {
+        key: 'connection',
+        value: 'Connection'
+    },
+    {
+        key: 'deviceMemory',
+        value: 'Device memory'
+    },
+    {
+        key: 'onLine',
+        value: 'Online'
+    },
+    {
+        key: 'platform',
+        value: 'Platform'
+    },
+    {
+        key: 'userAgent',
+        value: 'User agent'
+    }
+]
+
+setInterval(() => {
+    systemInfo.forEach(info => setSystemInfo(info))
+}, 1000)
 
 const commandsData = [
     {
