@@ -115,7 +115,7 @@ const directoryStructure = [
             {
                 type: 'file',
                 item: 'about.txt',
-                content: '<p class="about">Im a freelanced fullstack developer and a passionate programmer who believes in learn by errors.</p>'
+                content: '<p class="about">A freelance penetration tester and developer who believes Everyone Can Code.</p>'
             }
         ]
     },
@@ -125,7 +125,7 @@ const directoryStructure = [
             {
                 type: 'file',
                 item: 'work.txt',
-                content: '<p class="work">I work as a platform developer at <a target="_blank" href="https://thestartupreneur.co">The Startupreneur.</a></p>'
+                content: '<p class="work">I am co-founder at <a target="_blank" href="https://in.linkedin.com/company/cybernito">Cybernito</a></p>'
             }
         ]
     },
@@ -135,7 +135,7 @@ const directoryStructure = [
             {
                 type: 'file',
                 item: 'technology.txt',
-                content: '<p class="technology">I love to code with Vue Js. Other than Vue my favorite weapons are TypeScript and JavaScript. Most of the cases i spend time with Firebase.</p>'
+                content: '<p class="technology">I love to code with Java, Javascript, Python. I spend most of time in terminal.</p>'
             }
         ]
     },
@@ -145,7 +145,7 @@ const directoryStructure = [
             {
                 type: 'file',
                 item: 'connect.txt',
-                content: '<div class="connect"><div class="row"> <span>GitHub - </span> <a href="https://github.com/thealoneprogrammer" target="_blank" alt="thealoneprogrammer">https://github.com/thealoneprogrammer</a></div><div class="row"> <span>LinkedIn - </span> <a href="https://www.linkedin.com/in/sujith-d/" target="_blank" alt="thealoneprogrammer">https://www.linkedin.com/in/sujith-d</a></div><div class="row"> <span>Instagram - </span> <a href="https://www.instagram.com/thealoneprogrammer/" target="_blank" alt="thealoneprogrammer">https://www.instagram.com/thealoneprogrammer</a></div><div class="row"> <span>Facebook - </span> <a href="https://www.facebook.com/sujith.kulal.31" target="_blank" alt="thealoneprogrammer">https://www.facebook.com/sujith.kulal.31</a></div><div class="row"> <span>Email - </span> <a href="mailto:thealoneprogrammer@gmail.com" target="_blank" alt="thealoneprogrammer">thealoneprogrammer@gmail.com</a></div></div>'
+                content: '<div class="connect"><div class="row"><div class="row"> <span>Email - </span> <a href="mailto:awyawhare@gmail.com" target="_blank" alt="jaywyawhare">awyawhare@gmail.com</a></div></div><div class="row"> <span>GitHub - </span> <a href="https://github.com/jaywyawhare" target="_blank" alt="jaywyawhare">https://github.com/jaywyawhare</a></div><div class="row"> <span>LinkedIn - </span> <a href="https://www.linkedin.com/in/arinjay-wyawhare/" target="_blank" alt="jaywyawhare">https://www.linkedin.com/in/arinjay-wyawhare</a></div><div class="row"> <span>Instagram - </span> <a href="https://www.instagram.com/jaywyawhare/" target="_blank" alt="jaywyawhare">https://www.instagram.com/jaywyawhare</a></div>'
             }
         ]
     }

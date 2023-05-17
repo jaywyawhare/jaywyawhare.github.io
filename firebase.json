@@ -1,0 +1,48 @@
+{
+  "hosting": {
+    "cleanUrls": true,
+    "public": ".",
+    "redirects": [
+      {
+        "source": "/terminal",
+        "destination": "/Terminal",
+        "type": 301
+      },
+      {
+        "source": "/blogs",
+        "destination": "/Blogs",
+        "type": 301
+      },
+      {
+        "source": "/blog",
+        "destination": "/Blogs",
+        "type": 301
+      },
+      {
+        "source": "/about",
+        "destination": "/About",
+        "type": 301
+      },
+      {
+        "source": "/projects",
+        "destination": "/Projects",
+        "type": 301
+      },
+      {
+        "source": "/project",
+        "destination": "/Projects",
+        "type": 301
+      },
+      {
+        "source": "/resume",
+        "destination": "/Resume",
+        "type": 301
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

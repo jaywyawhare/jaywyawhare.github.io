@@ -132,12 +132,10 @@ body {
   
   .view-source-container {
     width: 260px;
-    margin-top: 100px;
+    margin-left: 50px;
   }
   
-  .view-source-container#prep-me-view-source {
-    margin-top: 70px;
-  }
+  
   
   .view-source-container img {
     display: inline-block;
@@ -178,7 +176,8 @@ body {
   }
   
   .card-image#prepme-image img{
-    width: 400px;
+    width: 300px;
+    height: 280px;
   }
   
   /* TRANSITIONS */
@@ -213,7 +212,7 @@ body {
   
   .card-container:hover .card-image#prepme-image img{
     transform: translate(1.5px, 4px);
-    width: 394px;
+    width: 300px;
   }
   
   /* Small Screens (Phones) */
@@ -282,7 +281,5 @@ body {
       margin-bottom: 16px;
     }
   
-    .view-source-container {
-      margin-top: 20px;
-    }
+ 
   }
