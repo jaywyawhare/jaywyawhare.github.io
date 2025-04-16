@@ -1,48 +1,10 @@
 import { FileText, Book, Archive } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-
-const experiences = [
-  {
-    role: "RecruitAI",
-    title: "Founder",
-    period: "Aug 2024 - Present",
-    description: "AI-powered Applicant Tracking System using NLP and ML",
-    tags: ["AI", "NLP", "Machine Learning", "Entrepreneurship", "FastAPI", "React.js"]
-  },
-  {
-    role: "Dive",
-    title: "GitHub Octern",
-    period: "Aug 2023 - Nov 2023",
-    description: "Developed video quality assessment pipeline with deep learning, reducing human intervention by 80%. Optimized GitHub CI/CD, increasing test coverage by 12%.",
-    tags: ["Large Language Models (LLM)", "Backend", "Python", "Datadog"]
-  },
-  {
-    role: "Cybernito",
-    title: "Co-Founder",
-    period: "Feb 2022 - Jul 2023",
-    description: "Co-Founder: Helped develop and execute the company's overall business strategy. Focused on web development and cybersecurity.",
-    tags: ["Web Development", "New Business Development"]
-  },
-  {
-    role: "Microsoft",
-    title: "Cybersecurity Engage Mentee",
-    period: "May 2022 - Jul 2022",
-    description: "Learned from cybersecurity professionals and gained hands-on experience.",
-    tags: ["Python", "Penetration Testing"]
-  },
-  {
-    role: "CodeWithGeeks",
-    title: "Head Of Cybersecurity Operations",
-    period: "Nov 2020 - Nov 2021",
-    description: "Responsible for all aspects of the company's cybersecurity program.",
-    tags: ["IT Security", "Management"]
-  }
-];
+import aboutData from '@/content/about.json';
 
 const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background/95 to-background/90">
-      
       {/* Hero Section */}
       <section className="min-h-[95vh] flex items-center relative border-b border-primary/10">
         <div className="max-w-6xl mx-auto px-6 py-12 relative z-10">
@@ -50,19 +12,18 @@ const Home = () => {
             <div className="space-y-10">
               <div className="space-y-8 animate-fade-up">
                 <h1 className="text-5xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-secondary animate-gradient-x">
-                  Arinjay Wyawhare
+                  {aboutData.name}
                 </h1>
                 <p className="text-xl text-muted-foreground/90 leading-relaxed max-w-2xl backdrop-blur-sm bg-background/5 p-4 rounded-xl border border-primary/5">
-                  A software engineer passionate about machine learning, AI, and cloud computing. 
-                  Leading innovation at RecruitAI with experience from Microsoft and GitHub.
+                  {aboutData.tagline}
                 </p>
                 <div className="flex flex-wrap gap-3 justify-center">
-                  {["AI Engineer", "Security Analyst", "Backend Engineer"].map((tag) => (
-                    <Badge key={tag} variant="secondary" 
+                  {aboutData.roles.map((role) => (
+                    <Badge key={role} variant="secondary" 
                       className="px-6 py-2 text-sm backdrop-blur-md bg-primary/5 
                         hover:bg-primary/10 transition-all duration-300 
                         hover:scale-105 border border-primary/10 shadow-sm">
-                      {tag}
+                      {role}
                     </Badge>
                   ))}
                 </div>
@@ -111,8 +72,8 @@ const Home = () => {
             <div className="relative aspect-rectangle animate-float hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2rem] blur-3xl animate-pulse-slow" />
               <img 
-                src="/image.png" 
-                alt="Arinjay Wyawhare"
+                src={aboutData.image}
+                alt={aboutData.name}
                 className="rounded-[2rem] object-cover w-full h-full cyber-border-advanced p-4 glass-card-modern shadow-2xl hover:scale-[1.02] transition-transform duration-500"
               />
             </div>
@@ -132,7 +93,7 @@ const Home = () => {
             </div>
             
             <div className="space-y-12 relative">
-              {experiences.map((exp, i) => (
+              {aboutData.experiences.map((exp, i) => (
                 <div 
                   key={i}
                   className="ml-16 relative glass-card-modern p-8 rounded-xl

@@ -1,0 +1,43 @@
+{
+  "name": "Arinjay Wyawhare",
+  "tagline": "A software engineer passionate about machine learning, AI, and cloud computing. Leading innovation at RecruitAI with experience from Microsoft and GitHub.",
+  "roles": ["AI Engineer", "Security Analyst", "Backend Engineer"],
+  "image": "/image.png",
+  "experiences": [
+    {
+      "role": "RecruitAI",
+      "title": "Founder",
+      "period": "Aug 2024 - Present",
+      "description": "AI-powered Applicant Tracking System using NLP and ML",
+      "tags": ["AI", "NLP", "Machine Learning", "Entrepreneurship", "FastAPI", "React.js"]
+    },
+    {
+      "role": "Dive",
+      "title": "GitHub Octern",
+      "period": "Aug 2023 - Nov 2023",
+      "description": "Developed video quality assessment pipeline with deep learning, reducing human intervention by 80%. Optimized GitHub CI/CD, increasing test coverage by 12%.",
+      "tags": ["Large Language Models (LLM)", "Backend", "Python", "Datadog"]
+    },
+    {
+      "role": "Cybernito",
+      "title": "Co-Founder",
+      "period": "Feb 2022 - Jul 2023",
+      "description": "Co-Founder: Helped develop and execute the company's overall business strategy. Focused on web development and cybersecurity.",
+      "tags": ["Web Development", "New Business Development"]
+    },
+    {
+      "role": "Microsoft",
+      "title": "Cybersecurity Engage Mentee",
+      "period": "May 2022 - Jul 2022",
+      "description": "Learned from cybersecurity professionals and gained hands-on experience.",
+      "tags": ["Python", "Penetration Testing"]
+    },
+    {
+      "role": "CodeWithGeeks",
+      "title": "Head Of Cybersecurity Operations",
+      "period": "Nov 2020 - Nov 2021",
+      "description": "Responsible for all aspects of the company's cybersecurity program.",
+      "tags": ["IT Security", "Management"]
+    }
+  ]
+}
