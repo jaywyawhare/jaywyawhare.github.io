@@ -65,9 +65,12 @@ export function SearchCommand() {
   };
 
   const handleSelect = (result: SearchResult) => {
-    const path = result.type === 'blog' ? `/blog/${result.slug}` : `/projects/${result.slug}`;
+    if (result.type === 'blog') {
+      navigate(`/blog/${result.slug}`);
+    } else {
+      navigate(`/projects#${result.slug}`);
+    }
     setOpen(false);
-    navigate(path);
   };
 
   return (
@@ -120,14 +123,16 @@ export function SearchCommand() {
                   <Command.Item
                     key={`${result.type}-${result.slug}`}
                     onSelect={() => handleSelect(result)}
-                    className={cn(
-                      "group relative flex cursor-pointer select-none flex-col rounded-sm px-2 py-3 text-sm outline-none",
-                      "aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-                      "hover:bg-accent hover:text-accent-foreground transition-colors"
-                    )}
+                    onClick={() => handleSelect(result)}
+                    role="button"
+                    value={result.title}
+                    className="group relative flex cursor-pointer select-none rounded-sm px-2 py-3 text-sm outline-none 
+                             aria-selected:bg-accent aria-selected:text-accent-foreground 
+                             hover:bg-accent hover:text-accent-foreground transition-colors
+                             data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground"
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-border/50 bg-background shrink-0">
+                    <div className="flex items-center gap-2 w-full pointer-events-auto">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-border/50 bg-background shrink-0 pointer-events-none">
                         {result.type === 'blog' ? (
                           <FileText className="h-5 w-5 text-primary" />
                         ) : (
@@ -135,7 +140,7 @@ export function SearchCommand() {
                         )}
                       </div>
                       
-                      <div className="flex-1 space-y-1">
+                      <div className="flex-1 space-y-1 pointer-events-none">
                         <div className="flex items-center gap-2">
                           <span className="font-medium">{result.title}</span>
                           <ArrowRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-muted-foreground/70 transition-colors ml-auto" />
