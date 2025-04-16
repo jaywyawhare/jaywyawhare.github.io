@@ -164,16 +164,18 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16">
+    <div className="max-w-7xl mx-auto px-6 py-6">
       {/* Featured Projects */}
       <section className="mb-24">
-        <div className="space-y-4 mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold gradient-text">
-            Featured Projects
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A collection of my most significant works and achievements
-          </p>
+        <div className="flex items-start justify-between gap-4 mb-12">
+          <div className="flex-1 space-y-2">
+            <h1 className="text-4xl sm:text-5xl font-bold gradient-text">
+              Featured Projects
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              A collection of my most significant works and achievements
+            </p>
+          </div>
         </div>
         
         <div className="grid gap-8 sm:grid-cols-2">

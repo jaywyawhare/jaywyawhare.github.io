@@ -169,7 +169,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-8">
+    <div className="max-w-4xl mx-auto px-6 py-6">
       <div className="space-y-8">
         {/* Header with fixed layout */}
         <div className="flex items-start justify-between gap-4">
