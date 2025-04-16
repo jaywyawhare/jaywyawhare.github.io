@@ -7,6 +7,7 @@ import { getAllPosts, type BlogPost } from '@/lib/blog';
 import { Calendar, Clock, ChevronRight, ChevronLeft, ChevronsLeft, ChevronsRight, ChevronDown } from 'lucide-react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
+import NoContentFallback from '@/components/NoContentFallback';
 
 const BlogCard = ({ post }: { post: BlogPost }) => (
   <Link to={`/blog/${post.slug}`} className="block group">
@@ -168,6 +169,25 @@ const Blog = () => {
     );
   };
 
+  if (loading) {
+    return (
+      <div className="max-w-4xl mx-auto px-6 py-6 space-y-6">
+        {Array(4).fill(null).map((_, i) => <LoadingCard key={i} />)}
+      </div>
+    );
+  }
+
+  if (posts.length === 0) {
+    return (
+      <div className="max-w-4xl mx-auto px-6 py-32">
+        <NoContentFallback 
+          message="No blog posts available yet. Check back soon!" 
+          className="min-h-[400px]"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-6">
       <div className="space-y-8">
@@ -241,14 +261,23 @@ const Blog = () => {
 
         {/* Posts List */}
         <div className="space-y-6">
-          {loading ? (
-            Array(4).fill(null).map((_, i) => <LoadingCard key={i} />)
-          ) : currentPosts.map((post) => (
-            <BlogCard key={post.slug} post={post} />
-          ))}
+          {currentPosts.length > 0 ? (
+            currentPosts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))
+          ) : (
+            <NoContentFallback 
+              message="No posts match your selected filters." 
+              action={{
+                label: "Clear filters",
+                onClick: () => setSelectedTags([])
+              }}
+              className="min-h-[200px]"
+            />
+          )}
         </div>
 
-        {!loading && totalPages > 1 && (
+        {currentPosts.length > 0 && totalPages > 1 && (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

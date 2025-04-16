@@ -4,6 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { getAllProjects, type Project } from '@/lib/projects';
 import { ExternalLink, Github, FileText, Pin } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import NoProjectsFallback from '@/components/NoProjectsFallback';
+import NoContentFallback from '@/components/NoContentFallback';
 
 const truncateText = (text: string, wordCount: number) => {
   const words = text.trim().split(/\s+/);
@@ -163,36 +165,56 @@ const Projects = () => {
     loadProjects();
   }, []);
 
+  if (featuredProjects.length === 0 && otherProjects.length === 0) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-32">
+        <NoProjectsFallback 
+          message="No projects available yet. Check back soon!" 
+          className="min-h-[400px]"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-6">
       {/* Featured Projects */}
-      <section className="mb-24">
-        <div className="flex items-start justify-between gap-4 mb-12">
-          <div className="flex-1 space-y-2">
-            <h1 className="text-4xl sm:text-5xl font-bold gradient-text">
-              Featured Projects
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              A collection of my most significant works and achievements
-            </p>
+      {featuredProjects.length > 0 ? (
+        <section className="mb-24">
+          <div className="flex items-start justify-between gap-4 mb-12">
+            <div className="flex-1 space-y-2">
+              <h1 className="text-4xl sm:text-5xl font-bold gradient-text">
+                Featured Projects
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                A collection of my most significant works and achievements
+              </p>
+            </div>
           </div>
-        </div>
-        
-        <div className="grid gap-8 sm:grid-cols-2">
-          {featuredProjects.map((project) => (
-            <ProjectCard 
-              key={project.slug} 
-              project={project} 
-              featured={true}
-            />
-          ))}
-        </div>
-      </section>
+          
+          <div className="grid gap-8 sm:grid-cols-2">
+            {featuredProjects.map((project) => (
+              <ProjectCard 
+                key={project.slug} 
+                project={project} 
+                featured={true}
+              />
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section className="mb-24">
+          <NoContentFallback 
+            message="No featured projects yet. Star some projects to feature them here!"
+            className="min-h-[200px]"
+          />
+        </section>
+      )}
 
       {/* More Projects */}
-      {otherProjects.length > 0 && (
-        <section className="pt-16 border-t border-muted">
-          <h2 className="text-3xl font-bold mb-12">More Projects</h2>
+      <section className={cn("pt-16", featuredProjects.length > 0 && "border-t border-muted")}>
+        <h2 className="text-3xl font-bold mb-12">More Projects</h2>
+        {otherProjects.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {otherProjects.map((project) => (
               <ProjectCard 
@@ -202,8 +224,13 @@ const Projects = () => {
               />
             ))}
           </div>
-        </section>
-      )}
+        ) : (
+          <NoContentFallback 
+            message="More projects coming soon!"
+            className="min-h-[200px]"
+          />
+        )}
+      </section>
     </div>
   );
 };
