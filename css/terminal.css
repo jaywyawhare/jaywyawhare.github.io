@@ -1,7 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-
+:root {
+  --bg-color: #1a1b26;
+  --terminal-bg: rgba(26, 27, 38, 0.95);
+  --text-color: #a9b1d6;
+  --prompt-color: #7aa2f7;
+  --accent-color: #bb9af7;
+  --error-color: #f7768e;
+  --success-color: #9ece6a;
+}
 
 * {
     margin: 0;
@@ -10,20 +18,23 @@
 }
 
 body {
-    font-family: Ubuntu;
+    font-family: 'Inter', sans-serif;
     background-image: url("../src/Kali-Linux-Black-Wallpaper.png");
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     height: 100vh;
-    color: #d1d1d1;
+    color: var(--text-color);
 }
 
-
 .terminal {
-    width: 1000px;
-    height: 500px;
-    box-shadow: 2px 4px 10px rgba(27, 25, 25, 0.7);
+    width: 90vw;
+    max-width: 1200px;
+    height: 80vh;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     top: 50%;
     left: 50%;
     position: absolute;
@@ -37,9 +48,10 @@ body {
     align-items: center;
     padding: 0 8px;
     box-sizing: border-box;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    background : rgba(27, 25, 25, 0.7);
+    background: var(--terminal-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px 12px 0 0;
+    justify-content: space-between;
 }
 
 .option_bar {
@@ -49,20 +61,22 @@ body {
     align-items: center;
     padding: 0 8px;
     box-sizing: border-box;
-    background : rgba(27, 25, 25, 0.7);
-
+    background: rgba(27, 25, 25, 0.7);
 }
+
 .bar__options {
     color: #d5d0ce;
     font-size: 14px;
     line-height: 15px;
-    word-spacing:4px;
+    word-spacing: 4px;
 }
 
 .bar__buttons {
     display: flex;
     align-items: center;
-    margin-left: 425px;
+    margin-left: auto;
+    gap: 8px;
+    padding-right: 8px;
 }
 
 .bar__button {
@@ -70,16 +84,16 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0;
-    margin-right: 5px;
+    margin-right: 0;
     font-size: 14px;
     height: 12px;
     width: 12px;
-    /* box-sizing: border-box; */
     border: none;
     border-radius: 100%;
     background: radial-gradient(black, transparent);
     text-shadow: 0px 1px 0px rgb(255 255 255 / 20%);
     color: white;
+    transition: all 0.2s ease;
 }
 .bar__button:hover {
     cursor: pointer;
@@ -94,24 +108,31 @@ body {
 
 .bar__user {
     color: #d5d0ce;
-    margin-left: 445px;
+    margin-left: 0;
     font-size: 14px;
     line-height: 15px;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .terminal__body {
-    background: rgba(13, 10, 15, 0.61);
-    font-family: "Ubuntu Mono";
+    background: var(--terminal-bg);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
     height: calc(100% - 30px);
-    padding: 2px 0 0 2px;
+    padding: 16px;
+    font-size: 15px;
+    color: var(--text-color);
     cursor: text;
 }
 
 .terminal__prompt {
     display: flex;
+    margin: 8px 0;
 }
 .terminal__prompt__user {
-    color: #f50000;
+    color: var(--prompt-color);
+    font-weight: bold;
 }
 .terminal__prompt__location {
     color: #4878c0;
@@ -120,16 +141,17 @@ body {
     color: #dddddd;
 }
 .terminal__prompt__cursor {
-    font-family: "Ubuntu Mono";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    caret-color: var(--accent-color);
+    animation: blink 1s infinite;
     border: none;
     background: transparent;
     outline: none;
-    font-size: 14px;
     height: 18px;
     width: 100%;
     margin-left: 9px;
     color: #fff;
-    /* animation: blink 1200ms linear infinite; */
 }
 
 .intro {
@@ -172,7 +194,17 @@ td {
 }
 
 .listings > span {
-    margin-right: 40px;
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.listings > span:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
 }
 
 .connect {
@@ -186,30 +218,59 @@ td {
 #denied {
     text-align: center;
     display: none;
-    color: #f00;
+    color: var(--error-color);
 }
 
 @keyframes blink {
-    0% {
-        background: #ffffff;
+    0%, 100% {
+        opacity: 1;
     }
-    49% {
-        background: #ffffff;
-    }
-    60% {
-        background: transparent;
-    }
-    99% {
-        background: transparent;
-    }
-    100% {
-        background: #ffffff;
+    50% {
+        opacity: 0;
     }
 }
 
+/* Markdown and PDF Viewer Styles */
+.markdown-content {
+    padding: 20px;
+    line-height: 1.8;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    color: var(--text-color);
+}
+
+.markdown-content code {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: calc(100vh - 150px);
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+}
+
+/* Mobile responsiveness for viewers */
 @media (max-width: 600px) {
     .terminal {
         max-height: 90%;
         width: 90%;
+    }
+
+    .markdown-content {
+        padding: 10px;
+    }
+    
+    .pdf-viewer {
+        height: calc(100vh - 200px);
     }
 }

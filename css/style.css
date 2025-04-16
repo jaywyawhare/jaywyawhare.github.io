@@ -1,0 +1,8 @@
+.nav-bar a[href="/blogs.html"] {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.nav-bar a[href="/blogs.html"]:hover {
+    color: rgba(255, 152, 0, 1);
+}

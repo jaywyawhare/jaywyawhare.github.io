@@ -44,12 +44,7 @@ terminal.addEventListener('click', () => {
 const audios = {
     error: '../audio/src_assets_audio_error.wav',
     folder: '../audio/src_assets_audio_folder.wav',
-    scan: '../audio/src_assets_audio_scan.wav',
-    info: '../audio/src_assets_audio_info.wav',
-    granted: '../audio/src_assets_audio_granted.wav',
-    keyboard: '../audio/src_assets_audio_keyboard.wav',
-    stdout: '../audio/src_assets_audio_stdout.wav',
-    stdin: '../audio/src_assets_audio_stdin.wav'
+    scan: '../audio/src_assets_audio_scan.wav'
 }
 
 const audio = new Audio()
@@ -96,7 +91,12 @@ const commandsData = [
     }
 ]
 
-const commands = ['help', 'cd', 'ls', 'cat', 'clear', 'pwd']
+const commands = ['help', 'cd', 'ls', 'cat', 'clear', 'pwd', 'view', 'markdown'];
+
+let lastTabPressed = 0;
+let tabCompletionIndex = 0;
+let lastInput = '';
+
 const directoryStructure = [
     {
         pathName: '~',
@@ -146,6 +146,43 @@ const directoryStructure = [
                 type: 'file',
                 item: 'connect.txt',
                 content: '<div class="connect"><div class="row"><div class="row"> <span>Email - </span> <a href="mailto:awyawhare@gmail.com" target="_blank" alt="jaywyawhare">awyawhare@gmail.com</a></div></div><div class="row"> <span>GitHub - </span> <a href="https://github.com/jaywyawhare" target="_blank" alt="jaywyawhare">https://github.com/jaywyawhare</a></div><div class="row"> <span>LinkedIn - </span> <a href="https://www.linkedin.com/in/arinjay-wyawhare/" target="_blank" alt="jaywyawhare">https://www.linkedin.com/in/arinjay-wyawhare</a></div><div class="row"> <span>Instagram - </span> <a href="https://www.instagram.com/jaywyawhare/" target="_blank" alt="jaywyawhare">https://www.instagram.com/jaywyawhare</a></div>'
+            }
+        ]
+    },
+    {
+        pathName: '~/secret',
+        items: [
+            {
+                type: 'file',
+                item: 'resume.txt',
+                content: '<div class="resume"><h2>Resume Found!</h2><p>Download my resume here: <a href="./src/resume.pdf" target="_blank">resume.pdf</a></p></div>'
+            }
+        ]
+    },
+    {
+        pathName: '~/.hidden',
+        items: [
+            {
+                type: 'file',
+                item: '.resume.enc',
+                content: '<div class="resume"><h2>Access Granted</h2><p>Decryption successful. Download: <a href="./src/resume.pdf" target="_blank">resume.pdf</a></p></div>'
+            }
+        ]
+    },
+    {
+        pathName: '~/Documents',
+        items: [
+            {
+                type: 'file',
+                item: 'sample.md',
+                content: '# Sample Markdown\n\nThis is a sample markdown file.',
+                format: 'markdown'
+            },
+            {
+                type: 'file',
+                item: 'document.pdf',
+                content: './documents/document.pdf',
+                format: 'pdf'
             }
         ]
     }
@@ -206,29 +243,47 @@ function listFileOrDirectories() {
     displayOutput({ command: '', data: el.outerHTML })
 }
 
+function viewMarkdown(content) {
+    const md = window.markdownit();
+    const result = md.render(content);
+    displayOutput({ 
+        command: '', 
+        data: `<div class="markdown-content">${result}</div>` 
+    });
+}
+
+function viewPDF(filepath) {
+    displayOutput({
+        command: '',
+        data: `<iframe class="pdf-viewer" src="${filepath}#toolbar=0"></iframe>`
+    });
+}
+
 function displayFileContents(file) {
     if (file === undefined) {
-        displayOutput(commandsData.find(cmdDt => cmdDt.command === 'help'))
-        return
+        displayOutput(commandsData.find(cmdDt => cmdDt.command === 'help'));
+        return;
     }
-    if (!isHome()) {
-        audio.src = audios.stdout
-        audio.play()
-        const obj = directoryStructure.find(path => path.pathName === currentPath)
-        if (obj === undefined) {
-            displayOutput({ command: '', data: `<span class="no__such">No such file called ${file}</span>` })
-            return
-        }
-        const item = obj.items.find(item => item.item === file)
 
-        if (item === undefined) {
-            displayOutput({ command: '', data: `<span class="no__such">No such file called ${file}</span>` })
-            return
-        }
-        displayOutput({ command: '', data: item.content })
-        return
+    const obj = directoryStructure.find(path => path.pathName === currentPath);
+    if (!obj) {
+        displayOutput({ command: '', data: `<span class="no__such">No such file called ${file}</span>` });
+        return;
     }
-    displayOutput({ command: '', data: `<span class="no__such">No such file called ${file}</span>` })
+
+    const item = obj.items.find(item => item.item === file);
+    if (!item) {
+        displayOutput({ command: '', data: `<span class="no__such">No such file called ${file}</span>` });
+        return;
+    }
+
+    if (item.format === 'markdown') {
+        viewMarkdown(item.content);
+    } else if (item.format === 'pdf') {
+        viewPDF(item.content);
+    } else {
+        displayOutput({ command: '', data: item.content });
+    }
 }
 
 function presentWorkingDir() {
@@ -241,6 +296,64 @@ function switchFolder(folder) {
     clear()
     currentPath = '~'
     changeDirectory(folder)
+}
+
+function getMatchingItems(input) {
+    const [cmd, ...args] = input.split(' ');
+    
+    // Command completion
+    if (!args.length) {
+        return commands.filter(c => c.startsWith(cmd));
+    }
+    
+    // File/directory completion
+    const obj = directoryStructure.find(item => item.pathName === currentPath);
+    if (!obj) return [];
+    
+    const partial = args[args.length - 1];
+    return obj.items
+        .map(item => item.item)
+        .filter(name => name.startsWith(partial));
+}
+
+function handleTabCompletion(event) {
+    if (event.key !== 'Tab') return;
+    event.preventDefault();
+    
+    const input = inputEl.value;
+    const now = Date.now();
+    
+    // Reset completion state if too much time passed or input changed
+    if (now - lastTabPressed > 2000 || input !== lastInput) {
+        tabCompletionIndex = 0;
+        lastInput = input;
+    }
+    
+    const matches = getMatchingItems(input);
+    if (!matches.length) return;
+    
+    // Cycle through matches
+    const match = matches[tabCompletionIndex % matches.length];
+    const parts = input.split(' ');
+    
+    if (parts.length === 1) {
+        // Completing command
+        inputEl.value = match;
+    } else {
+        // Completing filename
+        parts.pop();
+        inputEl.value = parts.join(' ') + ' ' + match;
+    }
+    
+    tabCompletionIndex++;
+    lastTabPressed = now;
+
+    // Add visual feedback for completion
+    inputEl.style.transition = 'all 0.2s ease';
+    inputEl.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+    setTimeout(() => {
+        inputEl.style.backgroundColor = 'transparent';
+    }, 200);
 }
 
 function executeCommand(command) {
@@ -269,16 +382,24 @@ function executeCommand(command) {
 }
 
 function observeKeyInput(event) {
-    audio.src = audios.stdin
-    audio.play()
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        clear()
-        executeCommand(inputEl.value)
+    if (event.key === 'Tab') {
+        return handleTabCompletion(event);
     }
+    
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        clear();
+        executeCommand(inputEl.value);
+        inputEl.value = '';
+        return;
+    }
+    
+    audio.src = audios.stdin;
+    audio.play();
 }
 
-inputEl.addEventListener('keyup', observeKeyInput)
+inputEl.removeEventListener('keyup', observeKeyInput);
+inputEl.addEventListener('keydown', observeKeyInput);
 
 function clear() {
     sysInfoEl.style.display = 'none'
@@ -288,11 +409,35 @@ function clear() {
 }
 
 function displayOutput(obj) {
-    audio.src = audios.granted
-    audio.play()
-    clear()
-    outputEl.innerHTML = obj.data
+    audio.src = audios.granted;
+    audio.play();
+    clear();
+    
+    // Add fade-in animation
+    outputEl.style.opacity = '0';
+    outputEl.innerHTML = obj.data;
+    
+    requestAnimationFrame(() => {
+        outputEl.style.transition = 'opacity 0.2s ease';
+        outputEl.style.opacity = '1';
+    });
 }
+
+// Add smooth scrolling
+function scrollToBottom() {
+    const terminal = document.querySelector('.terminal__body');
+    terminal.scrollTo({
+        top: terminal.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+// Call scrollToBottom after each command
+inputEl.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        setTimeout(scrollToBottom, 100);
+    }
+});
 
 document.addEventListener('contextmenu', (event) => {
     event.preventDefault()

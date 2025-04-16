@@ -1,99 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-SR1FG488VM"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-SR1FG488VM");
-    </script>
-
-    <title>Blogs - Arinjay Wyawhare</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/animate.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="./src/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="./css/main.css" />
-    <link rel="stylesheet" type="text/css" href="./css/projects.css" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,800,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post - Arinjay Wyawhare</title>
+    <link rel="stylesheet" href="css/blogs.css" />
   </head>
-
-  <body background="./src/portfolio-bg.png">
-    <span id="mouse-pointer" class="mouse-pointer"></span>
-
-    <div class="top-bar">
-      <a href="./index.html">
-        <img class="main-logo" src="./src/m_color.png" height="56px" />
-        <span class="highlight-circle"></span>
-      </a>
-      <div class="nav-bar">
-        <ul>
-          <li><a href="./Projects.html">Projects</a></li>
-          <li><a class="active" href="./Blogs.html">Blogs</a></li>
-          <li><a href="./Resume.html">Resume</a></li>
-        </ul>
-      </div>
+  <body>
+    <nav class="nav-bar">
+      <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./Projects.html">PROJECTS</a></li>
+        <li><a href="./Blogs.html">BLOGS</a></li>
+        <li><a href="./Resume.html">RESUME</a></li>
+        <li><a href="./About.html">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div class="blog-post-container">
+      <article id="blog-content"></article>
     </div>
-
-    <span class="circle first-circle"></span>
-    <span class="circle sec-circle"></span>
-    <span class="circle third-circle"></span>
-
-    <div class="my-projects-header">Cybersecurity</div>
-
-    <div class="projects">
-      <div class="project-card">
-        <div class="card-container">
-          <div class="card-frame"></div>
-          <a
-            href="https://github.com/jaywyawhare/Conveys-game-of-life"
-            target="_blank"
-          >
-            <div class="card-selector">
-              <div class="card-number" style="top: 0px">01.</div>
-            </div>
-          </a>
-          <div class="card-content">
-            <div class="card-text">
-              <div class="card-title">Heading</div>
-              <div class="card-desc">
-                Java implementation of zero-player game with graphical support,
-                using Java Swing and AWT.
-              </div>
-            </div>
-            <div class="card-tags">
-              <span>JAVA</span>
-              <span>SWING</span>
-              <span>AWT</span>
-            </div>
-          </div>
-
-          <div class="card-image">
-            <img src="src/GoL.png" />
-          </div>
-
-          <div class="view-source-container">
-            <img class="arrow" src="src/right-arrow-white.png" />
-            <div class="view-source-text">Source Code</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/blogpost.js"></script>
   </body>
 </html>

@@ -30,6 +30,10 @@ body {
     font-size: 64px;
     letter-spacing: 10px;
     margin-bottom: 24px;
+    background: linear-gradient(45deg, var(--text-color), var(--main-orange-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
   }
   
   .intro-desc-text {
@@ -40,12 +44,22 @@ body {
     font-size: 22px;
     letter-spacing: 1.83px;
     line-height: 36px;
+    opacity: 0.9;
   }
   
   .view-work-container {
     margin: auto;
     width: 260px;
     margin-top: 36px;
+    border: 2px solid var(--main-orange-color);
+    border-radius: 30px;
+    padding: 12px 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .view-work-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
   }
   
   .view-work-container:hover .view-work-text {
@@ -151,4 +165,10 @@ body {
     .developed-by-container {
       display: none;
     }
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }

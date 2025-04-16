@@ -1,138 +1,30 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SR1FG488VM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SR1FG488VM');
-</script>
-    
-    <title>blogs - Arinjay Wyawhare</title>
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/animate.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="./src/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="./css/blogs.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,800,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-</head>
-
-<body background="./src/portfolio-bg.png">
-    <span id="mouse-pointer" class="mouse-pointer"></span>
-
-    <div class="top-bar">
-        <a href="./index.html">
-            <img class="main-logo" src="./src/m_color.png" height="56px">
-            <span class="highlight-circle"></span>
-        </a>
-        <div class="nav-bar">
-            <ul>
-                <li><a href="./Projects.html">Projects</a></li>
-                <li><a class="active" href="./Blogs.html">Blogs</a></li>
-                <li><a href="./Resume.html">Resume</a></li>
-            </ul>
-        </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs - Portfolio</title>
+    <link rel="stylesheet" href="css/blogs.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./Projects.html">PROJECTS</a></li>
+        <li><a href="./Blogs.html" class="active">BLOGS</a></li>
+        <li><a href="./Resume.html">RESUME</a></li>
+      </ul>
+    </nav>
+    <div id="mouse-pointer"></div>
+    <h1 class="my-blogs-header">BLOGS</h1>
+    <div class="blogs-container">
+      <div class="blogs-grid">
+        <!-- Blog cards will be dynamically loaded here -->
+      </div>
     </div>
-
-    <span class="circle first-circle"></span>
-    <span class="circle sec-circle"></span>
-
-
-    <div class="my-blogs-header">MY BLOGS</div>
-
-    <div class="blogs">
-        <div class="project-card">
-            <div class="card-container">
-                <div class="card-frame"></div>
-                <!-- <a href="https://github.com/jaywyawhare/Conveys-game-of-life" target="_blank"> -->
-                    <div class="card-selector">
-                        <div class="card-number" style="top: 0px">01.</div>
-                    </div>
-                </a>
-                <div class="card-content">
-                    <div class="card-text">
-                        <div class="card-title">CYBERSECURITY</div>
-                        <div class="card-desc">
-                            Cybersecurity blogs and articles.
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="card-image">
-                    <img src="src/cybersec.png" />
-                </div>
-
-                <div class="view-source-container">
-                    <img class="arrow" src="src/right-arrow-white.png">
-                    <div class="view-source-text">View Blogs</div>           
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="card-container">
-                <div class="card-frame"></div>
-                <!-- <a href="https://github.com/jaywyawhare/Ransomware" target="_blank"> -->
-                <div class="card-selector">
-                        <div class="card-number" style="top: 0px">02.</div>
-                    </div>
-                </a>
-                <div class="card-content">
-                    <div class="card-text">
-                        <div class="card-title">PROGRAMMING</div>
-                        <div class="card-desc">
-                            Programming blogs and articles.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-image" id="prepme-image">
-                    <img src="src/programming.png" />
-                </div>
-
-                <div class="view-source-container">
-                    <img class="arrow" src="src/right-arrow-white.png">      
-                    <div class="view-source-text">View Blogs</div>                    
-                </div>
-
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="card-container">
-                <div class="card-frame"></div>
-                <!-- <a href="https://github.com/jaywyawhare/Ransomware" target="_blank"> -->
-                    <div class="card-selector">
-                        <div class="card-number" style="top: 0px">03.</div>
-                    </div>
-                </a>
-                <div class="card-content">
-                    <div class="card-text">
-                        <div class="card-title">TECHNOLOGY</div>
-                        <div class="card-desc">
-                            Technology blogs and articles.  
-                        </div>
-                    </div>
-                </div>
-                <div class="card-image">
-                    <img src="src/technology.png" />
-                </div>
-                <div class="view-source-container">
-                    <img class="arrow" src="src/right-arrow-white.png">
-                    <div class="view-source-text">View Blogs</div>          
-                </div>
-            </div>
-        </div>
-    </div>    
-</body>
+    <script src="js/blogs.js"></script>
+  </body>
+</html>

@@ -32,6 +32,10 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
     />
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.8.1/firebase-app-compat.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
   </head>
 
   <body>
@@ -43,13 +47,15 @@
         <img class="main-logo" src="./src/m_color.png" height="56px" />
         <span class="highlight-circle"></span>
       </a>
-      <div class="nav-bar">
+      <nav class="nav-bar">
         <ul>
-          <li><a href="./Projects.html">Projects</a></li>
-          <li><a href="./Blogs.html">Blogs</a></li>
-          <li><a href="./Resume.html">Resume</a></li>
+          <li><a class="active" href="./index.html">HOME</a></li>
+          <li><a href="./Projects.html">PROJECTS</a></li>
+          <li><a href="./Blogs.html">BLOGS</a></li>
+          <li><a href="./Resume.html">RESUME</a></li>
+          <li><a href="./About.html">ABOUT</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
     <div class="name-intro-container">

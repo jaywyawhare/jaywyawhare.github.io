@@ -1,10 +1,35 @@
-var $mouseX = 0, $mouseY = 0;
-var $xp = 0, $yp = 0;
-var $xm = 0, $ym = 0;
+const mousePointer = {
+  x: 0,
+  y: 0,
+  targetX: 0,
+  targetY: 0
+};
 
-$(document).mousemove(function (e) {
-  $mouseX = e.clientX;
-  $mouseY = e.clientY;
+// Use requestAnimationFrame for smooth animations
+function animate() {
+  // Smooth mouse following
+  mousePointer.x += (mousePointer.targetX - mousePointer.x) * 0.1;
+  mousePointer.y += (mousePointer.targetY - mousePointer.y) * 0.1;
+  
+  // Update pointer position
+  const pointer = document.getElementById('mouse-pointer');
+  if(pointer) {
+    pointer.style.transform = `translate(${mousePointer.x}px, ${mousePointer.y}px)`;
+  }
+
+  // Parallax effects
+  document.querySelectorAll('.circle').forEach(circle => {
+    const speed = circle.dataset.speed || 0.1;
+    circle.style.transform = `translate(${mousePointer.x * speed}px, ${mousePointer.y * speed}px)`;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+// Event listeners
+document.addEventListener('mousemove', (e) => {
+  mousePointer.targetX = e.clientX - 10;
+  mousePointer.targetY = e.clientY - 10;
 });
 
 // Pointer hover actions
@@ -28,75 +53,5 @@ $(document).ready(function () {
   });
 });
 
-// Animating all elements
-var $loop = setInterval(function () {
-  if (document.width < 768) { // No pointer on small screens
-    return;
-  }
-  // mouse pointer
-  $xm += (($mouseX - $xm) / 4);
-  $ym += (($mouseY - $ym) / 4);
-  $(".mouse-pointer").css({
-    left: $xm - 10 + 'px',
-    top: $ym - 10 + 'px'
-  });
-
-  // other elem x and y values
-  $xp += (($mouseX - $xp) / 12);
-  $yp += (($mouseY - $yp) / 12);
-
-  // index-page circle
-  $(".index-circle").css({
-    left: -($xp * 0.075) + 400 + 'px',
-    top: -($yp * 0.075) - 450 + 'px'
-  });
-
-  // project-page circles
-  $(".first-circle").css({
-    left: -($xp * 0.075) + 50 + 'px',
-    top: -($yp * 0.075) + 550 + 'px'
-  });
-  $(".sec-circle").css({
-    left: -($xp * 0.075) + 800 + 'px',
-    top: -($yp * 0.075) + 1200 + 'px'
-  });
-  $(".third-circle").css({
-    left: -($xp * 0.075) + 300 + 'px',
-    top: -($yp * 0.075) + 2400 + 'px'
-  });
-
-  // about-page elements
-  $(".first-circle-about").css({
-    left: -($xp * 0.075) + 180 + 'px',
-    top: -($yp * 0.075) - 50 + 'px'
-  });
-  // resume-page elements
-  $(".first-circle-resume").css({
-    left: -($xp * 0.075) + 180 + 'px',
-    top: -($yp * 0.075) - 50 + 'px'
-  });
-   // blogs-page elements
-   $(".first-circle-blogs").css({
-    left: -($xp * 0.075) + 180 + 'px',
-    top: -($yp * 0.075) - 50 + 'px'
-  });
-  $(".main-name").css({
-    right: ($xp * 0.01) + 320 + 'px',
-    top: -($yp * 0.01) + 150 + 'px'
-  });
-  $(".portrait-frame").css({
-    right: ($xp * 0.025) + 280 + 'px',
-    top: -($yp * 0.025) + 185 + 'px'
-  });
-
-  //photography-page elements
-  $(".first-circle-ph").css({
-    right: ($xp * 0.075) + 50 + 'px',
-    top: -($yp * 0.075) + 550 + 'px'
-  });
-  $(".sec-circle-ph").css({
-    right: ($xp * 0.075) + 800 + 'px',
-    top: -($yp * 0.075) + 1200 + 'px'
-  });
-
-}, 30);
+// Start animation loop
+animate();

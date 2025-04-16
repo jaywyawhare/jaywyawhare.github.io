@@ -1,21 +1,3 @@
-// a = [
-//     {
-//     type: "typedText",
-//     content: "•••••••••••",
-//     prefix: "password: ",
-//     delay: 500
-// }, {
-//     clear: !0,
-//     type: "basicText",
-//     content: "",
-//     delay: 250
-// },
-// ]
-
-
-// find a way to animate the array of objects with their attributes
-
-
 function animate(anim) {
     var i = 0;
     var animLength = anim.length;
@@ -42,5 +24,3 @@ function animate(anim) {
         }
     }, anim[i].delay);
 }
-
-function
