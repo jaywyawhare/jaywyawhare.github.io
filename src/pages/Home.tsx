@@ -132,7 +132,6 @@ const Home = () => {
             </div>
             
             <div className="space-y-12 relative">
-              <div className="absolute left-8 top-4 bottom-4 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
               {experiences.map((exp, i) => (
                 <div 
                   key={i}
@@ -143,11 +142,11 @@ const Home = () => {
                     backdrop-blur-md bg-gradient-to-r from-background/30 to-background/20
                     hover:from-background/40 hover:to-background/30"
                 >
-                  <div className="absolute -left-20 top-1/2 -translate-y-1/2">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 backdrop-blur-md 
+                  <div className="absolute -left-8 top-1/2 -translate-y-1/2 -translate-x-1/2">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 backdrop-blur-md 
                       flex items-center justify-center border border-primary/20
                       shadow-inner shadow-primary/10 group-hover:scale-110 transition-transform duration-500">
-                      <div className="w-3 h-3 rounded-full bg-primary group-hover:animate-pulse" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-primary group-hover:animate-pulse" />
                     </div>
                   </div>
                   <div className="space-y-4">
