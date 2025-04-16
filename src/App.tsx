@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import Socials from "@/components/Socials";
@@ -7,6 +7,7 @@ import Projects from '@/pages/Projects';
 import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import NotFound from '@/pages/NotFound';
+import { AdminRedirect } from './components/AdminRedirect';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/projects" element={<Projects />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/admin" element={<AdminRedirect />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
