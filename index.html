@@ -1,91 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-SR1FG488VM"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-SR1FG488VM");
-    </script>
-
-    <title>Arinjay Wyawhare</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/animate.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="./src/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="./css/index.css" />
-    <link rel="stylesheet" type="text/css" href="./css/main.css" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,800,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
-    />
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.8.1/firebase-app-compat.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jay Wyawhare</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   </head>
-
   <body>
-    <span id="mouse-pointer" class="mouse-pointer"></span>
-    <span class="circle index-circle"></span>
-
-    <div class="top-bar">
-      <a href="./index.html">
-        <img class="main-logo" src="./src/m_color.png" height="56px" />
-        <span class="highlight-circle"></span>
-      </a>
-      <nav class="nav-bar">
-        <ul>
-          <li><a class="active" href="./index.html">HOME</a></li>
-          <li><a href="./Projects.html">PROJECTS</a></li>
-          <li><a href="./Blogs.html">BLOGS</a></li>
-          <li><a href="./Resume.html">RESUME</a></li>
-          <li><a href="./About.html">ABOUT</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="name-intro-container">
-      <div class="intro-name-text">Arinjay Wyawhare</div>
-      <div class="intro-desc-text">I’m a Computer Science student</div>
-
-      <a href="./Projects.html">
-        <div class="view-work-container">
-          <img src="./src/right-arrow.png" />
-          <div class="view-work-text">My work</div>
-        </div>
-      </a>
-    </div>
-
-    <div class="sc-icons-container">
-      <a class="icon" href="https://github.com/jaywyawhare" target="_blank">
-        <i class="fa fa-github" style="font-size: 36px"></i>
-      </a>
-      <a
-        class="icon"
-        href="https://www.linkedin.com/in/arinjay-wyawhare-b8bab61b6"
-        target="_blank"
-      >
-        <i class="fa fa-linkedin"></i>
-      </a>
-      <a class="icon" href="mailto:awyawhare@gmail.com">
-        <i class="fa fa-envelope"></i>
-      </a>
-    </div>
-
-    <div class="developed-by-container">Maintained by Jay</div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
