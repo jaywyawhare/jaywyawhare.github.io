@@ -20,8 +20,10 @@ const ProjectCard = ({ project, featured = false }: {
   featured?: boolean;
 }) => (
   <Card 
+    id={project.slug}
     className={cn(
-      "group relative overflow-hidden hover:bg-muted/50 transition-all duration-300",
+      "group relative overflow-hidden bg-card/50 backdrop-blur border-primary/10",
+      featured ? "hover:border-primary/30" : "hover:border-primary/20",
       "transform hover:-translate-y-1 hover:shadow-xl flex flex-col",
       featured ? "h-[36rem]" : "h-[32rem]", // Increased height for non-featured cards
       "border-primary/50 shadow-primary/20 shadow-lg"
@@ -164,6 +166,17 @@ const Projects = () => {
     };
     loadProjects();
   }, []);
+
+  useEffect(() => {
+    // Scroll to hash element after page loads
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  }, [featuredProjects, otherProjects]);
 
   if (featuredProjects.length === 0 && otherProjects.length === 0) {
     return (

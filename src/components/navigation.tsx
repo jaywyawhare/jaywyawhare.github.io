@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
-import { ModeToggle } from "./mode-toggle"
-import { SearchCommand } from "./search-command"
+import { ModeToggle } from "@/components/mode-toggle"
+import { SearchCommand } from "@/components/search-command"
 import { cn } from "@/lib/utils"
 
 export function Navigation() {
@@ -33,8 +33,8 @@ export function Navigation() {
   return (
     <header className="fixed top-0 w-full z-50 px-4">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between glass-card rounded-2xl">
-        <Link to="/" className="text-lg font-semibold gradient-text">
-          JW.
+        <Link to="/" className="flex items-center">
+          <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
         </Link>
         
         <div className="flex items-center gap-8">
