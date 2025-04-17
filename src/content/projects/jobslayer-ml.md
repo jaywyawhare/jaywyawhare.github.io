@@ -1,11 +1,10 @@
 ---
 title: "JobSlayerML"
-description: "Automated machine learning pipeline for job market analysis"
+description: "Streamlit powered web-app to automate the model training and evaluation process for dataset, useful to set baseline for hackathons and competitions."
 date: "2024-02-28"
-tags: ["Python", "ML", "Automation"]
+tags: ["Python", "Machine Learning", "Auto-ML"]
 sourceUrl: "https://github.com/jaywyawhare/JobSlayerML"
+demoUrl: "https://jobslayerml.streamlit.app/"
 image: "https://github.com/jaywyawhare/JobSlayerML/raw/main/logo.png"
 pinned: true
 ---
-
-An automated machine learning pipeline designed to analyze job market trends and optimize recruitment processes.
