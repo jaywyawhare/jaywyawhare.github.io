@@ -14,23 +14,27 @@ const truncateText = (text: string, wordCount: number) => {
   return text;
 };
 
-const ProjectCard = ({ project, featured = false }: { 
-  project: Project; 
-  featured?: boolean;
-}) => (
+const ProjectCard = ({ project, featured = false }: { project: Project; featured?: boolean }) => (
   <Card 
     id={project.slug}
     className={cn(
       "group relative overflow-hidden bg-card/50 backdrop-blur border-primary/10",
-      featured ? "hover:border-primary/30" : "hover:border-primary/20",
-      "flex flex-col",
-      featured ? "h-[36rem]" : "h-[32rem]",
+      "flex flex-col rounded-3xl",
       "border-primary/50 shadow-primary/20 shadow-lg",
       "transition-shadow duration-300",
       "hover:shadow-2xl hover:shadow-primary/25",
-      "rounded-3xl" // Updated border radius
+      featured ? [
+        "w-[360px]", // Adjusted width for 3 per row
+        "h-[37rem]",
+        "hover:border-primary/30"
+      ] : [
+        "w-[240px]", // Adjusted width for 5 per row
+        "h-[41rem]",
+        "hover:border-primary/20"
+      ]
     )}
   >
+    {/* Pin Icon */}
     {project.pinned && (
       <div className={cn(
         "absolute top-4 right-4 z-20",
@@ -43,23 +47,26 @@ const ProjectCard = ({ project, featured = false }: {
 
     {/* Image Container */}
     <div className={cn(
-      "relative aspect-video w-full overflow-hidden p-4",
-      featured ? "h-64" : "h-52"
+      "relative w-full overflow-hidden p-4",
+      featured ? "h-[12rem]" : "h-[16rem]"
     )}>
       {project.image && (
         <img 
           src={project.image.url.startsWith('http') ? project.image.url : `${import.meta.env.BASE_URL}${project.image.url}`}
           alt={project.title} 
-          className="absolute inset-0 w-full h-full object-contain transition-[object-fit] duration-300 p-2 drop-shadow-lg hover:drop-shadow-xl"
+          className="absolute inset-0 w-full h-full object-contain p-2 drop-shadow-lg hover:drop-shadow-xl transition-all duration-300"
           loading="lazy"
         />
       )}
     </div>
 
-    {/* Content */}
+    {/* Content Section */}
     <div className="flex flex-col flex-1 p-6">
       {/* Tags */}
-      <div className="flex flex-wrap gap-2 items-center justify-center min-h-[3rem]">
+      <div className={cn(
+        "flex flex-wrap gap-2 items-center justify-center h-[4rem]",
+        featured ? "mb-4" : "mb-6" // Increased margin for non-featured projects
+      )}>
         {project.tags.map((tag) => (
           <Badge 
             key={tag} 
@@ -72,10 +79,7 @@ const ProjectCard = ({ project, featured = false }: {
       </div>
 
       {/* Title */}
-      <div className={cn(
-        "flex items-center py-2",
-        featured ? "min-h-[4rem]" : "min-h-[3rem]"
-      )}>
+      <div className="h-[4rem] mb-4">
         <h3 className={cn(
           "font-bold tracking-tight cyber-text line-clamp-2",
           featured ? "text-2xl" : "text-xl"
@@ -85,72 +89,34 @@ const ProjectCard = ({ project, featured = false }: {
       </div>
 
       {/* Description */}
-      <div className={cn(
-        "overflow-hidden",
-        featured ? "min-h-[4rem]" : "min-h-[6rem]" // Increased min-height for non-featured descriptions
-      )}>
+      <div className="h-[8rem] overflow-hidden">
         <p className="text-muted-foreground leading-relaxed">
-          {truncateText(project.description, featured ? 30 : 50)} {/* Increased word limit for non-featured */}
+          {truncateText(project.description, featured ? 30 : 50)}
         </p>
       </div>
     </div>
 
-    {/* Buttons Section */}
-    <div className={cn(
-      "border-t border-muted/20 bg-card/80 backdrop-blur-sm mt-auto",
-      featured ? "p-6 pt-4" : "p-3 pt-2"
-    )}>
+    {/* Action Buttons */}
+    <div className="border-t border-muted/20 bg-card/80 backdrop-blur-sm mt-auto p-3">
       <div className="flex items-center justify-center gap-6">
-        {project.demoUrl && (
+        {[
+          { url: project.demoUrl, icon: ExternalLink, title: "Live Demo" },
+          { url: project.sourceUrl, icon: Github, title: "Source Code" },
+          { url: project.docsUrl, icon: FileText, title: "Documentation" }
+        ].map((link, i) => link.url && (
           <a 
-            href={project.demoUrl}
+            key={i}
+            href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(
-              "inline-flex items-center justify-center transition-colors hover:text-primary",
-              featured ? "gap-2 text-sm" : "w-10 h-10 rounded-full hover:bg-primary/10",
-              "text-muted-foreground hover:text-primary"
-            )}
-            title="Live Demo"
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full 
+                     text-muted-foreground hover:text-primary hover:bg-primary/10 
+                     transition-colors"
+            title={link.title}
           >
-            <ExternalLink className="w-5 h-5" />
-            {featured && <span className="ml-1">Live Demo</span>}
+            <link.icon className="w-5 h-5" />
           </a>
-        )}
-
-        {project.sourceUrl && (
-          <a 
-            href={project.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "inline-flex items-center justify-center transition-colors hover:text-primary",
-              featured ? "gap-2 text-sm" : "w-10 h-10 rounded-full hover:bg-primary/10",
-              "text-muted-foreground hover:text-primary"
-            )}
-            title="Source Code"
-          >
-            <Github className="w-5 h-5" />
-            {featured && <span className="ml-1">Source Code</span>}
-          </a>
-        )}
-
-        {project.docsUrl && (
-          <a 
-            href={project.docsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "inline-flex items-center justify-center transition-colors hover:text-primary",
-              featured ? "gap-2 text-sm" : "w-10 h-10 rounded-full hover:bg-primary/10",
-              "text-muted-foreground hover:text-primary"
-            )}
-            title="Documentation"
-          >
-            <FileText className="w-5 h-5" />
-            {featured && <span className="ml-1">Documentation</span>}
-          </a>
-        )}
+        ))}
       </div>
     </div>
   </Card>
@@ -192,7 +158,7 @@ const Projects = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-6">
+    <div className="max-w-[90rem] mx-auto px-6 py-6"> {/* Increased max width */}
       {/* Featured Projects */}
       {featuredProjects.length > 0 && (
         <section className="mb-24">
@@ -204,7 +170,10 @@ const Projects = () => {
             </div>
           </div>
           
-          <div className="grid gap-8 sm:grid-cols-2">
+          <div className={cn(
+            "flex flex-wrap gap-6",
+            "justify-center lg:justify-evenly"
+          )}>
             {featuredProjects.map((project) => (
               <ProjectCard 
                 key={project.slug} 
@@ -230,7 +199,10 @@ const Projects = () => {
           ) : (
             <h2 className="text-3xl font-bold mb-12">More Projects</h2>
           )}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className={cn(
+            "flex flex-wrap gap-4",
+            "justify-center lg:justify-evenly"
+          )}>
             {otherProjects.map((project) => (
               <ProjectCard 
                 key={project.slug} 
