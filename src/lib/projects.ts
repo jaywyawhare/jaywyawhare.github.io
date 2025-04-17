@@ -9,7 +9,7 @@ export interface Project {
   slug: string;
   title: string;
   description: string;
-  date: string;
+  date: string;  // Required date field
   tags: string[];
   demoUrl?: string;    // Optional live demo URL
   sourceUrl?: string;  // Optional source code URL
@@ -54,17 +54,15 @@ export async function getAllProjects(): Promise<{
     })
   );
 
+  // Sort projects by date in descending order (newest first)
   const sortedProjects = projects.sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  // Get all pinned projects
-  const pinnedProjects = sortedProjects.filter(project => project.pinned);
-  
-  // Get all non-pinned projects
-  const otherProjects = sortedProjects.filter(project => !project.pinned);
-
-  return { pinnedProjects, otherProjects };
+  return {
+    pinnedProjects: sortedProjects.filter(p => p.pinned),
+    otherProjects: sortedProjects.filter(p => !p.pinned)
+  };
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {

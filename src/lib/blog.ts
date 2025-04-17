@@ -34,23 +34,28 @@ const blogModules = import.meta.glob('/src/content/blogs/*.md', {
 });
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  const posts = await Promise.all(
-    Object.entries(blogModules).map(async ([filepath, content]) => {
-      const slug = filepath.replace(/^.*\/(.+)\.md$/, '$1');
-      const { frontmatter, body } = parseFrontmatter(content);
-      const htmlContent = await marked(body);
-      const tableOfContents = extractTableOfContents(body);
+  try {
+    const posts = await Promise.all(
+      Object.entries(blogModules).map(async ([filepath, content]) => {
+        const slug = filepath.replace(/^.*\/(.+)\.md$/, '$1');
+        const { frontmatter, body } = parseFrontmatter(content);
+        const htmlContent = await marked(body);
+        const tableOfContents = extractTableOfContents(body);
 
-      return {
-        slug,
-        ...frontmatter,
-        content: htmlContent,
-        tableOfContents
-      } as BlogPost;
-    })
-  );
+        return {
+          slug,
+          ...frontmatter,
+          content: htmlContent,
+          tableOfContents
+        } as BlogPost;
+      })
+    );
 
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  } catch (error) {
+    console.warn('Error loading blog posts:', error);
+    return [];
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {

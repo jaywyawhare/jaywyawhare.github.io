@@ -5,7 +5,6 @@ import { getAllProjects, type Project } from '@/lib/projects';
 import { ExternalLink, Github, FileText, Pin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import NoProjectsFallback from '@/components/NoProjectsFallback';
-import NoContentFallback from '@/components/NoContentFallback';
 
 const truncateText = (text: string, wordCount: number) => {
   const words = text.trim().split(/\s+/);
@@ -24,9 +23,11 @@ const ProjectCard = ({ project, featured = false }: {
     className={cn(
       "group relative overflow-hidden bg-card/50 backdrop-blur border-primary/10",
       featured ? "hover:border-primary/30" : "hover:border-primary/20",
-      "transform hover:-translate-y-1 hover:shadow-xl flex flex-col",
-      featured ? "h-[36rem]" : "h-[32rem]", // Increased height for non-featured cards
-      "border-primary/50 shadow-primary/20 shadow-lg"
+      "flex flex-col",
+      featured ? "h-[36rem]" : "h-[32rem]",
+      "border-primary/50 shadow-primary/20 shadow-lg",
+      "transition-shadow duration-300",
+      "hover:shadow-2xl hover:shadow-primary/25"
     )}
   >
     {project.pinned && (
@@ -41,14 +42,14 @@ const ProjectCard = ({ project, featured = false }: {
 
     {/* Image Container */}
     <div className={cn(
-      "relative overflow-hidden",
+      "relative aspect-video w-full overflow-hidden p-4",
       featured ? "h-64" : "h-52"
     )}>
       {project.image && (
         <img 
           src={project.image.url.startsWith('http') ? project.image.url : `${import.meta.env.BASE_URL}${project.image.url}`}
           alt={project.title} 
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="absolute inset-0 w-full h-full object-contain transition-[object-fit] duration-300 p-2 drop-shadow-lg hover:drop-shadow-xl"
           loading="lazy"
         />
       )}
@@ -192,16 +193,13 @@ const Projects = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-6">
       {/* Featured Projects */}
-      {featuredProjects.length > 0 ? (
+      {featuredProjects.length > 0 && (
         <section className="mb-24">
           <div className="flex items-start justify-between gap-4 mb-12">
-            <div className="flex-1 space-y-2">
+            <div className="flex-1">
               <h1 className="text-4xl sm:text-5xl font-bold gradient-text">
                 Featured Projects
               </h1>
-              <p className="text-lg text-muted-foreground">
-                A collection of my most significant works and achievements
-              </p>
             </div>
           </div>
           
@@ -215,19 +213,22 @@ const Projects = () => {
             ))}
           </div>
         </section>
-      ) : (
-        <section className="mb-24">
-          <NoContentFallback 
-            message="No featured projects yet. Star some projects to feature them here!"
-            className="min-h-[200px]"
-          />
-        </section>
       )}
 
       {/* More Projects */}
-      <section className={cn("pt-16", featuredProjects.length > 0 && "border-t border-muted")}>
-        <h2 className="text-3xl font-bold mb-12">More Projects</h2>
-        {otherProjects.length > 0 ? (
+      {otherProjects.length > 0 && (
+        <section className={cn("pt-16", featuredProjects.length > 0 && "border-t border-muted")}>
+          {featuredProjects.length === 0 ? (
+            <div className="flex items-start justify-between gap-4 mb-12">
+              <div className="flex-1">
+                <h2 className="text-4xl sm:text-5xl font-bold gradient-text">
+                  Projects
+                </h2>
+              </div>
+            </div>
+          ) : (
+            <h2 className="text-3xl font-bold mb-12">More Projects</h2>
+          )}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {otherProjects.map((project) => (
               <ProjectCard 
@@ -237,13 +238,8 @@ const Projects = () => {
               />
             ))}
           </div>
-        ) : (
-          <NoContentFallback 
-            message="More projects coming soon!"
-            className="min-h-[200px]"
-          />
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 };

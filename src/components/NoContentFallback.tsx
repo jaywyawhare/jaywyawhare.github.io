@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface NoContentFallbackProps {
   message: string;
   className?: string;
