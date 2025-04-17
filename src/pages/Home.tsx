@@ -50,20 +50,26 @@ const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
   );
 
   return (
-    <div className="relative pl-6 pb bo-6 last:pb-0rder-l border-primary/20 last:border-0 group">
-      <div className="absolute left-0 top-6 w-2 h-2 rounded-full bg-primary transform -translate-x-[5px] group-hover:scale-150 transition-transform duration-300" />
-      {experience.demoUrl ? (
-        <a 
-          href={experience.demoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block hover:opacity-80 transition-opacity"
-        >
+    <div className="relative pl-8 border-l border-primary/20 group">
+      <div 
+        className="absolute -left-[0.4375rem] top-6 w-3.5 h-3.5 rounded-full border-2 border-primary/20 bg-primary/80 
+        transform group-hover:scale-125 transition-transform duration-300 
+        group-hover:border-primary/50 group-hover:bg-primary" 
+      />
+      <div className="pb-8">
+        {experience.demoUrl ? (
+          <a 
+            href={experience.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block hover:opacity-80 transition-opacity"
+          >
+            <CardContent />
+          </a>
+        ) : (
           <CardContent />
-        </a>
-      ) : (
-        <CardContent />
-      )}
+        )}
+      </div>
     </div>
   );
 };
