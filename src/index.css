@@ -296,7 +296,6 @@ body {
       0 0 10px theme('colors.primary.DEFAULT/0.5');
   }
 
-
   .neural-pulse {
     animation: neuralPulse 2s ease-in-out infinite;
   }
@@ -347,6 +346,30 @@ body {
 
   .markdown-content blockquote {
     @apply pl-4 border-l-4 border-primary italic;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .rotate-y-5 {
+    transform: rotateY(5deg);
+  }
+
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
   }
 
   @keyframes neuralPulse {
@@ -420,5 +443,10 @@ body {
     60% { clip-path: inset(40% 0 40% 0); }
     80% { clip-path: inset(80% 0 0 0); }
     100% { clip-path: inset(0 0 100% 0); }
+  }
+
+  @keyframes particle-fade {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.6; }
   }
 }

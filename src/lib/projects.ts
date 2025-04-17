@@ -36,6 +36,12 @@ const projectModules: GlobModule = import.meta.glob('/src/content/projects/*.md'
   as: 'raw' 
 }) as GlobModule;
 
+// Configure marked options
+marked.use({
+  mangle: false,
+  headerIds: false
+});
+
 export async function getAllProjects(): Promise<{
   pinnedProjects: Project[];
   otherProjects: Project[];

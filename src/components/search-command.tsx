@@ -1,12 +1,18 @@
 import { useEffect, useState, useCallback } from "react"
 import { useNavigate } from "react-router-dom"
-import { Command } from "cmdk"
+import { Command as CommandPrimitive } from "cmdk"
 import { Search, FileText, FolderGit2, ArrowRight } from "lucide-react"
 import { getAllPosts, type BlogPost } from "@/lib/blog"
 import { getAllProjects, type Project } from "@/lib/projects"
 import { search, type SearchResult } from "@/lib/search"
 import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
+
+const Command = {
+  Dialog: CommandPrimitive.Dialog,
+  Input: CommandPrimitive.Input,
+  List: CommandPrimitive.List,
+  Item: CommandPrimitive.Item,
+}
 
 export function SearchCommand() {
   const [open, setOpen] = useState(false)
