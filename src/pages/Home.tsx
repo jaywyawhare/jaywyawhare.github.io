@@ -51,7 +51,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
 
   return (
     <div className="relative pl-6 pb bo-6 last:pb-0rder-l border-primary/20 last:border-0 group">
-      <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-primary transform -translate-x-[5px] group-hover:scale-150 transition-transform duration-300" />
+      <div className="absolute left-0 top-6 w-2 h-2 rounded-full bg-primary transform -translate-x-[5px] group-hover:scale-150 transition-transform duration-300" />
       {experience.demoUrl ? (
         <a 
           href={experience.demoUrl}
@@ -170,14 +170,14 @@ const Home = () => {
             </div>
             
             <div 
-              className="group perspective-1000"
+              className="group"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               <Card className={cn(
                 "p-8 backdrop-blur-lg bg-card/30",
                 "hover:border-primary/20 transition-all duration-500",
-                "transform-gpu rotate-y-0 hover:rotate-y-5",
+                "transform-gpu scale-100 hover:scale-[1.02]",
                 isHovered ? 'shadow-xl shadow-primary/10' : '',
                 "cyber-card overflow-hidden",
                 "rounded-2xl"
