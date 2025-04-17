@@ -9,7 +9,15 @@
       "title": "Founder",
       "period": "Aug 2024 - Present",
       "description": "AI-powered Applicant Tracking System using NLP and ML",
-      "tags": ["AI", "NLP", "Machine Learning", "Entrepreneurship", "FastAPI", "React.js"]
+      "tags": [
+        "AI",
+        "NLP",
+        "Machine Learning",
+        "Entrepreneurship",
+        "FastAPI",
+        "React.js"
+      ],
+      "demoUrl": "https://recruit-ai.tech"
     },
     {
       "role": "Dive",

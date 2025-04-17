@@ -14,12 +14,12 @@ interface ExperienceItem {
   description: string;
   tags: string[];
   highlights?: string[]; // Make highlights optional
+  demoUrl?: string; // Add this line
 }
 
-const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => (
-  <div className="relative pl-6 pb-6 last:pb-0 border-l border-primary/20 last:border-0 group">
-    <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-primary transform -translate-x-[5px] group-hover:scale-150 transition-transform duration-300" />
-    <div className="space-y-2">
+const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
+  const CardContent = () => (
+    <div className="space-y-2 p-4 rounded-2xl hover:bg-primary/5 transition-all duration-300">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-xl cyber-text">{experience.role}</h3>
         <span className="text-sm text-muted-foreground bg-primary/5 px-3 py-1 rounded-full">
@@ -47,8 +47,26 @@ const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => (
         ))}
       </div>
     </div>
-  </div>
-);
+  );
+
+  return (
+    <div className="relative pl-6 pb bo-6 last:pb-0rder-l border-primary/20 last:border-0 group">
+      <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-primary transform -translate-x-[5px] group-hover:scale-150 transition-transform duration-300" />
+      {experience.demoUrl ? (
+        <a 
+          href={experience.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block hover:opacity-80 transition-opacity"
+        >
+          <CardContent />
+        </a>
+      ) : (
+        <CardContent />
+      )}
+    </div>
+  );
+};
 
 const Home = () => {
   const [isHovered, setIsHovered] = useState(false);
