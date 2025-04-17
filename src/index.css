@@ -153,8 +153,14 @@ body {
 
   .glass-card {
     @apply backdrop-blur-md bg-background/40 border border-border/50;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    transition: all 0.3s ease;
+  }
+
+  .project-card-image {
+    @apply relative w-full h-full;
+    aspect-ratio: 16 / 9;
+    img {
+      @apply absolute inset-0 w-full h-full object-cover object-center;
+    }
   }
 
   .glass-card-advanced {
