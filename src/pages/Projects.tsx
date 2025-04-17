@@ -27,7 +27,8 @@ const ProjectCard = ({ project, featured = false }: {
       featured ? "h-[36rem]" : "h-[32rem]",
       "border-primary/50 shadow-primary/20 shadow-lg",
       "transition-shadow duration-300",
-      "hover:shadow-2xl hover:shadow-primary/25"
+      "hover:shadow-2xl hover:shadow-primary/25",
+      "rounded-3xl" // Updated border radius
     )}
   >
     {project.pinned && (
