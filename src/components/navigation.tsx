@@ -39,9 +39,9 @@ export function Navigation() {
         
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-8">
+            <NavLink to="/">Home</NavLink>
             <NavLink to="/projects">Projects</NavLink>
             <NavLink to="/blog">Blog</NavLink>
-            <NavLink to="/resume">Resume</NavLink>
           </nav>
           
           <div className="flex items-center gap-4">
