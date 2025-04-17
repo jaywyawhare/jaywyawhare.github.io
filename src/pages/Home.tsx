@@ -1,4 +1,4 @@
-import { FileText, Book, Archive } from 'lucide-react';
+import { FileText, Calendar, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import aboutData from '@/content/about.json';
 import { Card } from '@/components/ui/card';
@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import Socials from '@/components/Socials';
 
-// Define the interface for experience items
+// Define the interface for experience items  
 interface ExperienceItem {
   role: string;
   title: string;
@@ -110,43 +110,71 @@ const Home = () => {
                   </div>
                 </div>
 
-                {/* Buttons with minimal glass container */}
+                {/* Buttons with modern glass container */}
                 <div className="backdrop-blur-sm bg-background/5 p-6 rounded-2xl">
-                  <div className="flex flex-row items-center justify-start gap-4">
+                  <div className="flex flex-row items-center justify-start gap-6">
                     {[
-                      { icon: FileText, text: "View\nProjects", href: "/projects" },
-                      { icon: Book, text: "Read\nBlog", href: "/blog" },
-                      { icon: Archive, text: "Download\nResume" }
-                    ].map(({ icon: Icon, text, href }) => {
-                      const buttonClassName = `
-                        inline-flex items-center gap-3 px-4 py-2 rounded-xl
-                        bg-primary/5 hover:bg-primary/15
-                        transition-all duration-300 text-sm font-medium
-                        hover:scale-105 hover:shadow-lg hover:shadow-primary/5
-                        w-32 justify-between min-h-[50px]
-                        group relative overflow-hidden
-                      `;
-                      
-                      const ButtonContent = () => (
-                        <>
+                      { 
+                        icon: FileText, 
+                        text: "Resume",
+                        subtext: "Download CV",
+                        href: aboutData.resumeUrl,
+                        external: true 
+                      },
+                      { 
+                        icon: Calendar, 
+                        text: "Meeting",
+                        subtext: "Schedule Call",
+                        href: aboutData.meetingUrl,
+                        external: true 
+                      },
+                    ].map(({ icon: Icon, text, subtext, href, external }) => (
+                      <a 
+                        key={text} 
+                        href={href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noopener noreferrer" : undefined}
+                        className="group flex-1"
+                      >
+                        <button className="
+                          w-full px-6 py-4 rounded-xl
+                          bg-primary/5 hover:bg-primary/10
+                          border border-primary/10 hover:border-primary/20
+                          transition-all duration-300
+                          group-hover:shadow-lg group-hover:shadow-primary/5
+                          relative overflow-hidden
+                        ">
                           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          <Icon size={18} className="text-primary flex-shrink-0 relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                          <span className="whitespace-pre-line text-right leading-tight flex-grow relative z-10 group-hover:translate-x-1 transition-transform duration-300">{text}</span>
-                        </>
-                      );
-                      
-                      return href ? (
-                        <a key={text} href={href} className="w-40">
-                          <button className={buttonClassName}>
-                            <ButtonContent />
-                          </button>
-                        </a>
-                      ) : (
-                        <button key={text} className={buttonClassName}>
-                          <ButtonContent />
+                          
+                          <div className="relative z-10 flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              <div className="
+                                p-2 rounded-lg
+                                bg-primary/10 group-hover:bg-primary/15
+                                transition-colors duration-300
+                              ">
+                                <Icon size={20} className="text-primary" />
+                              </div>
+                              
+                              <div className="text-left">
+                                <div className="text-sm font-medium text-foreground">
+                                  {text}
+                                </div>
+                                <div className="text-xs text-muted-foreground">
+                                  {subtext}
+                                </div>
+                              </div>
+                            </div>
+
+                            <ArrowRight className="
+                              w-4 h-4 text-primary/50
+                              transform translate-x-0 group-hover:translate-x-1
+                              transition-transform duration-300
+                            " />
+                          </div>
                         </button>
-                      );
-                    })}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -184,7 +212,7 @@ const Home = () => {
                 "p-8 backdrop-blur-lg bg-card/30",
                 "hover:border-primary/20 transition-all duration-500",
                 "transform-gpu scale-100 hover:scale-[1.02]",
-                isHovered ? 'shadow-xl shadow-primary/10' : '',
+                isHovered ? "shadow-xl shadow-primary/10" : "",
                 "cyber-card overflow-hidden",
                 "rounded-2xl"
               )}>
