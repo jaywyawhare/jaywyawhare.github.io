@@ -20,6 +20,9 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("minimal")}>
+          <FileText className="mr-2 h-4 w-4" /> Minimal
+        </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           <Moon className="mr-2 h-4 w-4" /> Dark
         </DropdownMenuItem>
@@ -28,9 +31,6 @@ export function ModeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("retro")}>
           <Terminal className="mr-2 h-4 w-4" /> Retro Terminal
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("minimal")}>
-          <FileText className="mr-2 h-4 w-4" /> Minimal
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
