@@ -40,17 +40,19 @@ marked.use({
   mangle: false
 });
 
-const blogModules = import.meta.glob('/src/content/blogs/*.md', { 
+type BlogModule = Record<string, string>;
+
+const blogModules = import.meta.glob<string>('/src/content/blogs/*.md', { 
   eager: true,
   as: 'raw' 
-});
+}) as BlogModule;
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
     const posts = await Promise.all(
       Object.entries(blogModules).map(async ([filepath, content]) => {
         const slug = filepath.replace(/^.*\/(.+)\.md$/, '$1');
-        const { frontmatter, body } = parseFrontmatter(content);
+        const { frontmatter, body } = parseFrontmatter(content as string);
         const htmlContent = await marked(body);
         const tableOfContents = extractTableOfContents(body);
 

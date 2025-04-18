@@ -29,7 +29,7 @@ const ParticleBackground: React.FC = () => {
     let particles: Particle[] = [];
     let mouseX = 0;
     let mouseY = 0;
-    let mouseTimeout: NodeJS.Timeout;
+    let mouseTimeout: ReturnType<typeof setTimeout>;
 
     const getParticleColor = () => {
       switch (theme) {

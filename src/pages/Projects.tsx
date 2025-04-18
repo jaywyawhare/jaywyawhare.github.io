@@ -94,7 +94,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
       )}>
         {project.image && (
           <img 
-            src={project.image.url.startsWith('http') ? project.image.url : `${import.meta.env.BASE_URL}${project.image.url}`}
+            src={project.image?.url.startsWith('http') ? project.image.url : `/assets${project.image.url}`}
             alt={project.title} 
             className="absolute inset-0 w-full h-full object-contain p-2 drop-shadow-lg hover:drop-shadow-xl transition-all duration-300"
             loading="lazy"

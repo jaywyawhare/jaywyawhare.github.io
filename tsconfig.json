@@ -18,7 +18,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ]
   },
   "include": [
     "src/**/*.ts",
@@ -27,7 +31,8 @@
     "src/components/**/*.tsx",
     "src/pages/**/*.ts",
     "src/pages/**/*.tsx",
-    "src/lib/**/*.ts"
+    "src/lib/**/*.ts",
+    "src/types/**/*.d.ts"
   ],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
