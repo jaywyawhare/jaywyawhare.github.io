@@ -57,7 +57,7 @@ export function Navigation() {
       )}>
         <div className="flex items-center gap-8">
           <Link to="/" className="flex items-center">
-            {!isMinimal && <img src="/logo.png" alt="Logo" className="h-8 w-auto" />}
+            {!isMinimal && <img src="/assets/logo.png" alt="Logo" className="h-8 w-auto" />}
             {isMinimal && <span className="text-lg font-mono">Jay Wyawhare</span>}
           </Link>
 
