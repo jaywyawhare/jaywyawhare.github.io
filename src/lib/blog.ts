@@ -23,10 +23,22 @@ function extractTableOfContents(content: string): TableOfContentsItem[] {
   return headings.map(heading => {
     const level = (heading.match(/^#+/) || [''])[0].length;
     const text = heading.replace(/^#+\s+/, '');
-    const id = text.toLowerCase().replace(/[^\w]+/g, '-');
+    // Generate a clean ID that matches what marked will generate
+    const id = text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')  // Remove special characters
+      .replace(/\s+/g, '-')      // Replace spaces with hyphens
+      .replace(/-+/g, '-')       // Replace multiple hyphens with single hyphen
+      .trim();                   // Trim any leading/trailing spaces
     return { id, text, level };
   });
 }
+
+// Configure marked options for consistent heading IDs
+marked.use({
+  headerIds: true,
+  mangle: false
+});
 
 const blogModules = import.meta.glob('/src/content/blogs/*.md', { 
   eager: true,

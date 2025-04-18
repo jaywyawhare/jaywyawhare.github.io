@@ -1,4 +1,4 @@
-import { Moon, Terminal, Zap } from "lucide-react"
+import { Moon, Terminal, Zap, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -28,6 +28,9 @@ export function ModeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("retro")}>
           <Terminal className="mr-2 h-4 w-4" /> Retro Terminal
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("minimal")}>
+          <FileText className="mr-2 h-4 w-4" /> Minimal
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

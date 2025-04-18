@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
-type Theme = "dark" | "cyberpunk" | "retro"
+type Theme = "dark" | "cyberpunk" | "retro" | "minimal"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -14,7 +14,7 @@ type ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undefined)
 
-export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultTheme = "minimal" }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     const savedTheme = localStorage.getItem("theme") as Theme
     return savedTheme || defaultTheme
@@ -23,7 +23,7 @@ export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProvider
   useEffect(() => {
     localStorage.setItem("theme", theme)
     const root = window.document.documentElement
-    root.classList.remove("dark", "cyberpunk", "retro")
+    root.classList.remove("dark", "cyberpunk", "retro", "minimal")
     root.setAttribute('data-theme', theme)
     root.classList.add(theme)
   }, [theme])

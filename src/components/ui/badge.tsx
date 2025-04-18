@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
+import { useTheme } from "../theme-provider"
 
 const badgeVariants = cva(
   "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -14,6 +15,7 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
+        minimal: "badge-minimal hover:bg-[#4a4a4a]"
       },
     },
     defaultVariants: {
@@ -27,8 +29,16 @@ export interface BadgeProps
     VariantProps<typeof badgeVariants> {}
 
 function Badge({ className, variant, ...props }: BadgeProps) {
+  const { theme } = useTheme()
+  const isMinimal = theme === 'minimal'
+  
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <div className={cn(
+      badgeVariants({ 
+        variant: isMinimal ? 'minimal' : variant 
+      }), 
+      className
+    )} {...props} />
   )
 }
 

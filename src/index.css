@@ -83,6 +83,29 @@ body {
     --muted-foreground: 120 100% 70%;
     --border: 120 100% 30%;
   }
+
+  :root[data-theme="minimal"] {
+    --background: 0 0% 15%;
+    --foreground: 0 0% 90%;
+    --primary: 0 0% 90%;
+    --primary-foreground: 0 0% 15%;
+    --secondary: 0 0% 80%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 85%;
+    --accent-foreground: 0 0% 15%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 0 0% 35%;
+    --card: 0 0% 17%;
+    --card-foreground: 0 0% 90%;
+    --popover: 0 0% 17%;
+    --popover-foreground: 0 0% 90%;
+    --badge-background: 0 0% 25%;
+    --badge-foreground: 0 0% 90%;
+    --badge-border: 0 0% 35%;
+  }
 }
 
 @layer base {
@@ -348,6 +371,16 @@ body {
     @apply pl-4 border-l-4 border-primary italic;
   }
 
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3 {
+    scroll-margin-top: 100px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   .perspective-1000 {
     perspective: 1000px;
   }
@@ -370,6 +403,10 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 0;
+  }
+
+  .badge-minimal {
+    @apply bg-[#404040] text-[#e6e6e6] border-[#595959];
   }
 
   @keyframes neuralPulse {
